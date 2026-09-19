@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="S Shabhith Krishna | Web Developer | Website Pentester | Cyber Security Enthusiast">
+<meta name="theme-color" content="#020605">
+
+<title>S Shabhith Krishna | Cyber Security Portfolio</title>
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --black: #020605;
+    --dark: #050c0a;
+    --dark2: #07130f;
+    --green: #00ff88;
+    --green-dark: #00c968;
+    --cyan: #00eaff;
+    --white: #eafff5;
+    --gray: #89a99b;
+    --border: rgba(0,255,136,0.18);
+    --card: rgba(5,18,13,0.82);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: "Courier New", Consolas, monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+::selection {
+    background: var(--green);
+    color: #00150b;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+section {
+    padding: 110px 0;
+    position: relative;
+}
+
+
+/* =========================================================
+   MATRIX BACKGROUND
+========================================================= */
+
+#matrix {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    opacity: 0.13;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            rgba(0,255,136,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,255,136,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 72px;
+
+    z-index: 999;
+
+    background: rgba(2,6,5,0.88);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: var(--green);
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.logo::before {
+    content: "> ";
+    color: var(--cyan);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--gray);
+    font-size: 0.78rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--green);
+    text-shadow: 0 0 12px var(--green);
+}
+
+.menu {
+    display: none;
+    color: var(--green);
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+#home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(0,255,136,0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(0,234,255,0.06),
+            transparent 30%
+        );
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 60px;
+    align-items: center;
+}
+
+
+/* Terminal */
+
+.terminal {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: rgba(2,8,6,0.90);
+
+    box-shadow:
+        0 0 50px rgba(0,255,136,0.05),
+        inset 0 0 30px rgba(0,255,136,0.02);
+
+    overflow: hidden;
+}
+
+.terminal-header {
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 15px;
+
+    background: rgba(0,255,136,0.045);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+
+.red {
+    background: #ff5f56;
+}
+
+.yellow {
+    background: #ffbd2e;
+}
+
+.green-dot {
+    background: #27c93f;
+}
+
+.terminal-name {
+    margin-left: auto;
+    margin-right: auto;
+
+    color: #54766a;
+
+    font-size: 0.7rem;
+}
+
+.terminal-content {
+    padding: 35px;
+}
+
+.command {
+    color: var(--green);
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+.command::before {
+    content: "$ ";
+    color: var(--cyan);
+}
+
+.hero h1 {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: clamp(3rem, 7vw, 6rem);
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--green);
+
+    text-shadow:
+        0 0 10px rgba(0,255,136,0.35),
+        0 0 30px rgba(0,255,136,0.15);
+}
+
+.hero-role {
+    color: var(--cyan);
+
+    font-size: 0.9rem;
+
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    max-width: 680px;
+
+    color: var(--gray);
+
+    font-size: 0.85rem;
+
+    margin-bottom: 30px;
+}
+
+.cursor {
+    display: inline-block;
+
+    width: 7px;
+    height: 17px;
+
+    background: var(--green);
+
+    margin-left: 4px;
+
+    vertical-align: middle;
+
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* Buttons */
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    border: 1px solid var(--green);
+
+    border-radius: 5px;
+
+    color: var(--green);
+
+    font-size: 0.78rem;
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--green);
+
+    color: #00150b;
+
+    box-shadow:
+        0 0 20px rgba(0,255,136,0.3);
+}
+
+.btn-primary {
+    background: var(--green);
+    color: #00150b;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--green);
+}
+
+
+/* =========================================================
+   CYBER SHIELD
+========================================================= */
+
+.cyber-card {
+    text-align: center;
+
+    padding: 35px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,255,136,0.06),
+            rgba(0,234,255,0.025)
+        );
+
+    box-shadow:
+        0 0 50px rgba(0,255,136,0.06);
+}
+
+.shield {
+    width: 180px;
+    height: 210px;
+
+    margin: auto auto 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 5rem;
+
+    color: var(--green);
+
+    background: rgba(0,255,136,0.05);
+
+    clip-path: polygon(
+        50% 0%,
+        92% 15%,
+        85% 70%,
+        50% 100%,
+        15% 70%,
+        8% 15%
+    );
+
+    filter:
+        drop-shadow(0 0 10px rgba(0,255,136,0.6))
+        drop-shadow(0 0 30px rgba(0,255,136,0.2));
+
+    animation: shieldPulse 2s infinite;
+}
+
+@keyframes shieldPulse {
+    50% {
+        filter:
+            drop-shadow(0 0 25px rgba(0,255,136,0.8))
+            drop-shadow(0 0 50px rgba(0,255,136,0.3));
+    }
+}
+
+.system-status {
+    color: var(--green);
+    font-size: 0.72rem;
+}
+
+.system-status::before {
+    content: "●";
+    margin-right: 7px;
+    animation: blink 1s infinite;
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
+
+.section-header {
+    margin-bottom: 45px;
+}
+
+.section-number {
+    color: var(--green);
+    font-size: 0.75rem;
+    margin-bottom: 5px;
+}
+
+.section-title {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 2.7rem;
+
+    line-height: 1.1;
+}
+
+.section-title span {
+    color: var(--green);
+}
+
+.section-line {
+    width: 70px;
+    height: 3px;
+
+    margin-top: 16px;
+
+    background: var(--green);
+
+    box-shadow: 0 0 15px var(--green);
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+.card {
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 30px;
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(0,255,136,0.45);
+
+    box-shadow:
+        0 10px 40px rgba(0,255,136,0.07);
+}
+
+.card h3 {
+    color: var(--green);
+
+    margin-bottom: 18px;
+
+    font-size: 1rem;
+}
+
+.card p {
+    color: var(--gray);
+
+    font-size: 0.85rem;
+}
+
+.info {
+    list-style: none;
+}
+
+.info li {
+    padding: 11px 0;
+
+    color: var(--gray);
+
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+
+    font-size: 0.8rem;
+}
+
+.info strong {
+    color: var(--white);
+
+    display: inline-block;
+
+    width: 110px;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.skill {
+    padding: 28px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    transition: 0.3s;
+}
+
+.skill:hover {
+    border-color: var(--green);
+
+    box-shadow:
+        0 0 30px rgba(0,255,136,0.08);
+
+    transform: translateY(-5px);
+}
+
+.skill-icon {
+    color: var(--green);
+
+    font-size: 2rem;
+
+    margin-bottom: 15px;
+}
+
+.skill h3 {
+    color: var(--green);
+
+    font-size: 0.95rem;
+
+    margin-bottom: 8px;
+}
+
+.skill p {
+    color: var(--gray);
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.timeline {
+    margin-left: 12px;
+
+    padding-left: 30px;
+
+    border-left: 2px solid var(--green);
+}
+
+.timeline-item {
+    position: relative;
+
+    padding: 28px;
+
+    margin-bottom: 25px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+}
+
+.timeline-item::before {
+    content: "";
+
+    position: absolute;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    left: -37px;
+    top: 31px;
+
+    box-shadow:
+        0 0 15px var(--green);
+}
+
+.timeline-label {
+    color: var(--cyan);
+
+    font-size: 0.7rem;
+}
+
+.timeline-item h3 {
+    margin: 7px 0;
+
+    color: var(--white);
+}
+
+.timeline-item p {
+    color: var(--gray);
+
+    font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+.project {
+    position: relative;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(6,20,15,0.95),
+            rgba(2,8,6,0.95)
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--green);
+
+    box-shadow:
+        0 0 35px rgba(0,255,136,0.08);
+}
+
+.project-number {
+    position: absolute;
+
+    right: 20px;
+    top: 5px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 5rem;
+
+    font-weight: bold;
+
+    color: rgba(0,255,136,0.035);
+}
+
+.project h3 {
+    color: var(--green);
+
+    margin-bottom: 12px;
+
+    font-size: 1rem;
+}
+
+.project p {
+    color: var(--gray);
+
+    font-size: 0.8rem;
+
+    margin-bottom: 20px;
+}
+
+.tags {
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+}
+
+.tag {
+    color: var(--cyan);
+
+    border: 1px solid rgba(0,234,255,0.2);
+
+    padding: 4px 8px;
+
+    border-radius: 3px;
+
+    font-size: 0.62rem;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+.contact-card {
+    padding: 30px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+}
+
+.contact-card h3 {
+    color: var(--green);
+
+    margin-bottom: 18px;
+}
+
+.contact-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.contact-icon {
+    color: var(--green);
+
+    font-size: 1.2rem;
+
+    width: 25px;
+}
+
+.contact-item span {
+    color: var(--gray);
+
+    font-size: 0.8rem;
+}
+
+.contact-item a:hover {
+    color: var(--green);
+}
+
+
+/* Contact terminal */
+
+.contact-terminal {
+    padding: 30px;
+
+    background: #010403;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    color: var(--gray);
+
+    font-size: 0.78rem;
+}
+
+.terminal-green {
+    color: var(--green);
+}
+
+.terminal-cyan {
+    color: var(--cyan);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    border-top: 1px solid var(--border);
+
+    padding: 28px 0;
+
+    text-align: center;
+
+    color: #557267;
+
+    font-size: 0.7rem;
+}
+
+footer span {
+    color: var(--green);
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cyber-card {
+        max-width: 400px;
+        margin: auto;
+    }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    section {
+        padding: 80px 0;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 72px;
+        left: 0;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        background: rgba(2,6,5,0.98);
+
+        padding: 25px;
+
+        text-align: center;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 3.1rem;
+
+        letter-spacing: -2px;
+    }
+
+    .terminal-content {
+        padding: 22px;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .hero h1 {
+        font-size: 2.6rem;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     MATRIX BACKGROUND
+====================================================== -->
+
+<canvas id="matrix"></canvas>
+
+
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
+
+<nav>
+
+<div class="container nav-container">
+
+<a href="#home" class="logo">
+SHABHITH_KRISHNA
+</a>
+
+<div class="menu" onclick="toggleMenu()">
+☰
+</div>
+
+<ul class="nav-links" id="navLinks">
+
+<li>
+<a href="#home">HOME</a>
+</li>
+
+<li>
+<a href="#about">ABOUT</a>
+</li>
+
+<li>
+<a href="#skills">SKILLS</a>
+</li>
+
+<li>
+<a href="#education">EDUCATION</a>
+</li>
+
+<li>
+<a href="#projects">PROJECTS</a>
+</li>
+
+<li>
+<a href="#contact">CONTACT</a>
+</li>
+
+</ul>
+
+</div>
+
+</nav>
+
+
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
+<section id="home">
+
+<div class="container hero-grid">
+
+
+<div class="hero">
+
+<div class="terminal">
+
+<div class="terminal-header">
+
+<div class="dot red"></div>
+<div class="dot yellow"></div>
+<div class="dot green-dot"></div>
+
+<div class="terminal-name">
+shabhith@cyber-terminal:~
+</div>
+
+</div>
+
+
+<div class="terminal-content">
+
+<div class="command">
+whoami
+</div>
+
+
+<h1>
+S SHABHITH<br>
+<span>KRISHNA</span>
+</h1>
+
+
+<div class="command">
+cat profile.txt
+</div>
+
+
+<div class="hero-role">
+
+WEB DEVELOPER
+//
+WEBSITE PENTESTER
+//
+CYBER SECURITY ENTHUSIAST
+
+</div>
+
+
+<p class="hero-description">
+
+BCA Graduate passionate about building modern web
+experiences, exploring application security, and
+understanding how digital systems can be protected
+against real-world threats.
+
+<span class="cursor"></span>
+
+</p>
+
+
+<div class="buttons">
+
+<a href="#projects" class="btn btn-primary">
+VIEW PROJECTS
+</a>
+
+<a href="#contact" class="btn">
+CONTACT ME
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- CYBER CARD -->
+
+<div class="cyber-card">
+
+<div class="shield">
+⌬
+</div>
+
+<div class="system-status">
+SYSTEM ONLINE // SECURITY MODE ACTIVE
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     ABOUT
+====================================================== -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="section-number">
+01 // ABOUT
+</div>
+
+<h2 class="section-title">
+Who <span>Am I?</span>
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+
+
+<div class="about-grid">
+
+
+<div class="card reveal">
+
+<h3>
+>_ ABOUT_ME
+</h3>
+
+<p>
+
+I'm S Shabhith Krishna, a BCA graduate from
+Bangalore City University with a strong interest
+in web development and cyber security.
+
+<br><br>
+
+I enjoy creating websites while also looking at
+them from a security perspective.
+
+<br><br>
+
+My interests include web application security,
+penetration testing, vulnerability research,
+secure coding and learning about modern
+cyber security technologies.
+
+</p>
+
+</div>
+
+
+
+<div class="card reveal">
+
+<h3>
+>_ IDENTITY.SYS
+</h3>
+
+<ul class="info">
+
+<li>
+<strong>Name:</strong>
+S Shabhith Krishna
+</li>
+
+<li>
+<strong>Age:</strong>
+24
+</li>
+
+<li>
+<strong>Degree:</strong>
+BCA
+</li>
+
+<li>
+<strong>University:</strong>
+Bangalore City University
+</li>
+
+<li>
+<strong>Location:</strong>
+Ernakulam, Kerala
+</li>
+
+<li>
+<strong>Role:</strong>
+Web Developer / Website Pentester
+</li>
+
+</ul>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     SKILLS
+====================================================== -->
+
+<section id="skills">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="section-number">
+02 // SKILLS
+</div>
+
+<h2 class="section-title">
+Technical <span>Arsenal</span>
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+
+
+<div class="skills-grid">
+
+
+<div class="skill reveal">
+
+<div class="skill-icon">
+⌘
+</div>
+
+<h3>
+WEB DEVELOPMENT
+</h3>
+
+<p>
+HTML, CSS, JavaScript, responsive interfaces
+and modern web development.
+</p>
+
+</div>
+
+
+
+<div class="skill reveal">
+
+<div class="skill-icon">
+◉
+</div>
+
+<h3>
+WEB PENTESTING
+</h3>
+
+<p>
+Web application security testing,
+vulnerability discovery and security assessment.
+</p>
+
+</div>
+
+
+
+<div class="skill reveal">
+
+<div class="skill-icon">
+⚔
+</div>
+
+<h3>
+CYBER SECURITY
+</h3>
+
+<p>
+Security concepts, attack surfaces,
+defensive practices and ethical hacking.
+</p>
+
+</div>
+
+
+
+<div class="skill reveal">
+
+<div class="skill-icon">
+⌬
+</div>
+
+<h3>
+VULNERABILITY RESEARCH
+</h3>
+
+<p>
+Exploring application weaknesses and
+understanding common security vulnerabilities.
+</p>
+
+</div>
+
+
+
+<div class="skill reveal">
+
+<div class="skill-icon">
+▣
+</div>
+
+<h3>
+SECURE CODING
+</h3>
+
+<p>
+Security-conscious development principles
+and secure application design.
+</p>
+
+</div>
+
+
+
+<div class="skill reveal">
+
+<div class="skill-icon">
+◈
+</div>
+
+<h3>
+PROBLEM SOLVING
+</h3>
+
+<p>
+Analytical thinking, debugging and
+technical investigation.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     EDUCATION
+====================================================== -->
+
+<section id="education">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="section-number">
+03 // EDUCATION
+</div>
+
+<h2 class="section-title">
+Academic <span>Journey</span>
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+
+
+<div class="timeline">
+
+
+<div class="timeline-item reveal">
+
+<div class="timeline-label">
+BACHELOR'S DEGREE
+</div>
+
+<h3>
+Bachelor of Computer Applications — BCA
+</h3>
+
+<p>
+Bangalore City University
+</p>
+
+</div>
+
+
+
+<div class="timeline-item reveal">
+
+<div class="timeline-label">
+FOCUS AREA
+</div>
+
+<h3>
+Web Development & Cyber Security
+</h3>
+
+<p>
+
+Developing practical interests in web
+technologies, penetration testing,
+application security and secure development.
+
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     PROJECTS
+====================================================== -->
+
+<section id="projects">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="section-number">
+04 // PROJECTS
+</div>
+
+<h2 class="section-title">
+Mission <span>Log</span>
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+
+
+<div class="projects-grid">
+
+
+<div class="project reveal">
+
+<div class="project-number">
+01
+</div>
+
+<h3>
+WEB SECURITY LAB
+</h3>
+
+<p>
+
+A personal learning environment for studying
+web application security concepts and
+defensive techniques.
+
+</p>
+
+<div class="tags">
+
+<span class="tag">
+WEB SECURITY
+</span>
+
+<span class="tag">
+PENTESTING
+</span>
+
+<span class="tag">
+OWASP
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="project reveal">
+
+<div class="project-number">
+02
+</div>
+
+<h3>
+SECURE WEB INTERFACE
+</h3>
+
+<p>
+
+Responsive web interface designed with
+security, usability and clean frontend
+architecture in mind.
+
+</p>
+
+<div class="tags">
+
+<span class="tag">
+HTML
+</span>
+
+<span class="tag">
+CSS
+</span>
+
+<span class="tag">
+JAVASCRIPT
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="project reveal">
+
+<div class="project-number">
+03
+</div>
+
+<h3>
+VULNERABILITY RESEARCH
+</h3>
+
+<p>
+
+Practical exploration of web application
+weaknesses, security testing methodologies
+and responsible disclosure concepts.
+
+</p>
+
+<div class="tags">
+
+<span class="tag">
+RESEARCH
+</span>
+
+<span class="tag">
+SECURITY
+</span>
+
+<span class="tag">
+ANALYSIS
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="project reveal">
+
+<div class="project-number">
+04
+</div>
+
+<h3>
+CYBER SECURITY PORTFOLIO
+</h3>
+
+<p>
+
+A cyber-security inspired personal portfolio
+featuring a terminal interface, Matrix-style
+background and responsive design.
+
+</p>
+
+<div class="tags">
+
+<span class="tag">
+PORTFOLIO
+</span>
+
+<span class="tag">
+UI/UX
+</span>
+
+<span class="tag">
+CYBER THEME
+</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     CONTACT
+====================================================== -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="section-header reveal">
+
+<div class="section-number">
+05 // CONTACT
+</div>
+
+<h2 class="section-title">
+Establish <span>Connection</span>
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+
+
+<div class="contact-grid">
+
+
+<div class="contact-card reveal">
+
+<h3>
+>_ CONTACT_INFORMATION
+</h3>
+
+
+<div class="contact-item">
+
+<div class="contact-icon">
+☎
+</div>
+
+<span>
+
+<a href="tel:8086079702">
+8086079702
+</a>
+
+</span>
+
+</div>
+
+
+
+<div class="contact-item">
+
+<div class="contact-icon">
+@
+</div>
+
+<span>
+
+<a href="mailto:shabhithstallionz@gmail.com">
+
+shabhithstallionz@gmail.com
+
+</a>
+
+</span>
+
+</div>
+
+
+
+<div class="contact-item">
+
+<div class="contact-icon">
+⌖
+</div>
+
+<span>
+Ernakulam, Kerala, India
+</span>
+
+</div>
+
+
+</div>
+
+
+
+<div class="contact-terminal reveal">
+
+<p>
+<span class="terminal-green">$</span>
+./connect.sh
+</p>
+
+<br>
+
+<p>
+Initializing secure connection...
+</p>
+
+<p>
+Identity:
+<span class="terminal-cyan">
+S SHABHITH KRISHNA
+</span>
+</p>
+
+<p>
+Role:
+<span class="terminal-cyan">
+WEB DEVELOPER / WEBSITE PENTESTER
+</span>
+</p>
+
+<p>
+Location:
+<span class="terminal-cyan">
+ERNAKULAM, KERALA
+</span>
+</p>
+
+<p>
+Status:
+<span class="terminal-green">
+AVAILABLE FOR OPPORTUNITIES
+</span>
+</p>
+
+<br>
+
+<p>
+<span class="terminal-green">
+Connection established ✓
+</span>
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+<div class="container">
+
+<p>
+
+&copy;
+<span id="year"></span>
+
+S Shabhith Krishna.
+
+Built with
+<span>&lt;/&gt;</span>
+and a passion for cyber security.
+
+</p>
+
+</div>
+
+</footer>
+
+
+
+<!-- ======================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script>
+
+/* ========================================================
+   MOBILE MENU
+======================================================== */
+
+function toggleMenu() {
+
+    document
+        .getElementById("navLinks")
+        .classList
+        .toggle("active");
+
+}
+
+
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            document
+                .getElementById("navLinks")
+                .classList
+                .remove("active");
+
+        });
+
+    });
+
+
+
+/* ========================================================
+   CURRENT YEAR
+======================================================== */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+
+/* ========================================================
+   SCROLL REVEAL
+======================================================== */
+
+const observer =
+    new IntersectionObserver(
+
+        function(entries) {
+
+            entries.forEach(function(entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target
+                        .classList
+                        .add("show");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(function(element) {
+
+        observer.observe(element);
+
+    });
+
+
+
+/* ========================================================
+   MATRIX EFFECT
+======================================================== */
+
+const canvas =
+    document.getElementById("matrix");
+
+const ctx =
+    canvas.getContext("2d");
+
+
+let width =
+    canvas.width =
+    window.innerWidth;
+
+
+let height =
+    canvas.height =
+    window.innerHeight;
+
+
+const fontSize = 14;
+
+
+let columns =
+    Math.floor(width / fontSize);
+
+
+let drops =
+    Array(columns).fill(1);
+
+
+const characters =
+    "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&<>[]{}()/\\\\|";
+
+
+
+function resizeCanvas() {
+
+    width =
+        canvas.width =
+        window.innerWidth;
+
+    height =
+        canvas.height =
+        window.innerHeight;
+
+    columns =
+        Math.floor(width / fontSize);
+
+    drops =
+        Array(columns).fill(1);
+
+}
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+
+function drawMatrix() {
+
+    ctx.fillStyle =
+        "rgba(2,6,5,0.08)";
+
+    ctx.fillRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    ctx.fillStyle =
+        "#00ff88";
+
+    ctx.font =
+        fontSize + "px monospace";
+
+
+    for (
+        let i = 0;
+        i < drops.length;
+        i++
+    ) {
+
+        const character =
+            characters[
+                Math.floor(
+                    Math.random() *
+                    characters.length
+                )
+            ];
+
+
+        ctx.fillText(
+            character,
+            i * fontSize,
+            drops[i] * fontSize
+        );
+
+
+        if (
+            drops[i] * fontSize > height &&
+            Math.random() > 0.975
+        ) {
+
+            drops[i] = 0;
+
+        }
+
+
+        drops[i]++;
+
+    }
+
+}
+
+
+setInterval(
+    drawMatrix,
+    45
+);
+
+</script>
+
+</body>
+</html>
