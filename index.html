@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shabhith Krishna | Software Developer & Arcade</title>
+  <title>Shabhith Krishna | Software Developer & Games Arcade</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     html { scroll-behavior: smooth; }
     .glass {
-      background: rgba(15, 23, 42, 0.75);
+      background: rgba(15, 23, 42, 0.8);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
     .glow:hover {
       box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.4);
     }
-    .nes-btn {
+    .arcade-btn {
       image-rendering: pixelated;
       box-shadow: 0 4px 0 #000;
+      user-select: none;
     }
-    .nes-btn:active {
+    .arcade-btn:active {
       transform: translateY(2px);
       box-shadow: 0 2px 0 #000;
     }
@@ -30,24 +31,27 @@
 
   <!-- Top Navigation Bar -->
   <nav class="fixed top-0 left-0 w-full z-50 glass">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <span class="text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <span class="text-xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
           SK<span class="text-blue-500">.</span>
         </span>
       </div>
 
       <!-- Navigation & Mode Tabs -->
-      <div class="flex items-center space-x-1 sm:space-x-3 bg-slate-900/90 p-1.5 rounded-full border border-slate-800">
-        <button id="tab-portfolio-btn" onclick="switchView('portfolio')" class="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition bg-blue-600 text-white shadow-sm flex items-center gap-1.5">
-          <i class="fas fa-user-circle"></i> <span>Portfolio</span>
+      <div class="flex items-center space-x-1 sm:space-x-2 bg-slate-900/90 p-1.5 rounded-full border border-slate-800 text-xs font-semibold">
+        <button id="tab-portfolio-btn" onclick="switchView('portfolio')" class="px-3 sm:px-4 py-1.5 rounded-full transition bg-blue-600 text-white shadow-sm flex items-center gap-1.5">
+          <i class="fas fa-user"></i> <span class="hidden sm:inline">Portfolio</span>
         </button>
-        <button id="tab-gaming-btn" onclick="switchView('gaming')" class="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition text-slate-400 hover:text-white flex items-center gap-1.5">
-          <i class="fas fa-gamepad text-red-400"></i> <span>Mario Arcade</span>
+        <button id="tab-mario-btn" onclick="switchView('mario')" class="px-3 sm:px-4 py-1.5 rounded-full transition text-slate-400 hover:text-white flex items-center gap-1.5">
+          <i class="fas fa-gamepad text-red-400"></i> <span>Mario</span>
+        </button>
+        <button id="tab-hillclimb-btn" onclick="switchView('hillclimb')" class="px-3 sm:px-4 py-1.5 rounded-full transition text-slate-400 hover:text-white flex items-center gap-1.5">
+          <i class="fas fa-mountain text-emerald-400"></i> <span>Hill Climb</span>
         </button>
       </div>
 
-      <div class="hidden sm:flex items-center space-x-4">
+      <div class="hidden md:flex items-center space-x-4">
         <a href="https://in.linkedin.com/in/shabhith-krishna-b66256229" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-wider font-semibold px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300 hover:border-blue-500 hover:text-blue-400 transition flex items-center gap-2">
           <i class="fab fa-linkedin"></i> LinkedIn
         </a>
@@ -55,26 +59,31 @@
     </div>
   </nav>
 
-  <!-- ==================== PORTFOLIO VIEW ==================== -->
+  <!-- ===================================================== -->
+  <!-- 1. PORTFOLIO VIEW                                     -->
+  <!-- ===================================================== -->
   <main id="portfolio-view" class="pt-16">
     <!-- Hero Section -->
     <header id="hero" class="min-h-[85vh] flex items-center justify-center text-center px-6">
       <div class="max-w-3xl">
         <span class="inline-block py-1 px-3 mb-4 rounded-full text-xs font-semibold tracking-wider bg-blue-950/70 text-blue-300 border border-blue-500/30">
-          FULL-STACK &amp; SECURITY ENTHUSIAST
+          SOFTWARE DEVELOPER &amp; APPSEC ENTHUSIAST
         </span>
         <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6">
           Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Shabhith Krishna</span>.
         </h1>
         <p class="text-base sm:text-lg text-slate-400 leading-relaxed mb-8 max-w-2xl mx-auto">
-          Crafting performant web applications, building responsive interfaces with modern frameworks, and diving deep into web security and system architectures.
+          Crafting performant web applications, building interactive single-page systems, and exploring application security, APIs, and automotive mechanics.
         </p>
-        <div class="flex flex-wrap justify-center gap-4">
+        <div class="flex flex-wrap justify-center gap-3">
           <a href="#projects" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition shadow-lg shadow-blue-500/25">
             View Projects
           </a>
-          <button onclick="switchView('gaming')" class="px-6 py-3 rounded-lg bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-500 hover:to-orange-400 text-white font-semibold text-sm transition shadow-lg shadow-red-500/25 flex items-center gap-2">
-            <i class="fas fa-gamepad"></i> Play Super Mario
+          <button onclick="switchView('mario')" class="px-5 py-3 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-red-500/20">
+            <i class="fas fa-gamepad"></i> Super Mario
+          </button>
+          <button onclick="switchView('hillclimb')" class="px-5 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-emerald-500/20">
+            <i class="fas fa-mountain"></i> Hill Climb (Mojo &amp; Pajero)
           </button>
         </div>
       </div>
@@ -90,7 +99,7 @@
             I am a software developer with a practical mindset focused on building dynamic user experiences, scalable APIs, and structured data utilities. I love turning product requirements into clean, maintainable code.
           </p>
           <p>
-            Along with development, I have a passion for cybersecurity, ethical hacking, and vulnerability assessments. When I step away from code and terminals, I unwind playing classic retro platformers and exploring automotive tech.
+            Along with development, I have a strong passion for automotive machines—from touring motorcycles to rugged 4x4s—and ethical hacking. When I want a coding break, I build fun canvas arcade engines right in the browser.
           </p>
         </div>
       </div>
@@ -108,10 +117,10 @@
               <i class="fas fa-code"></i>
             </div>
             <h4 class="font-semibold text-white mb-2">Frontend Development</h4>
-            <p class="text-xs text-slate-400 mb-4 leading-normal">Developing clean, dynamic client-side interfaces and responsive SPAs.</p>
+            <p class="text-xs text-slate-400 mb-4 leading-normal">Building responsive SPAs, dynamic components, and HTML5 Canvas engines.</p>
             <div class="flex flex-wrap gap-2">
               <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">React</span>
-              <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">JavaScript (ES6+)</span>
+              <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">JavaScript ES6+</span>
               <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Tailwind CSS</span>
               <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">HTML5 Canvas</span>
             </div>
@@ -122,7 +131,7 @@
               <i class="fas fa-server"></i>
             </div>
             <h4 class="font-semibold text-white mb-2">Backend &amp; Scripting</h4>
-            <p class="text-xs text-slate-400 mb-4 leading-normal">Creating backend endpoints, data transformers, and automated tooling.</p>
+            <p class="text-xs text-slate-400 mb-4 leading-normal">Developing high-speed APIs, data parsers, and command-line scripts.</p>
             <div class="flex flex-wrap gap-2">
               <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Python</span>
               <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">FastAPI</span>
@@ -136,12 +145,12 @@
               <i class="fas fa-shield-halved"></i>
             </div>
             <h4 class="font-semibold text-white mb-2">Security &amp; Tooling</h4>
-            <p class="text-xs text-slate-400 mb-4 leading-normal">Vulnerability research, web security posture, and Linux tools.</p>
+            <p class="text-xs text-slate-400 mb-4 leading-normal">Web application penetration testing, vulnerability assessment, and Linux environments.</p>
             <div class="flex flex-wrap gap-2">
-              <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Linux / Shell</span>
-              <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Git / GitHub</span>
+              <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Linux / Bash</span>
               <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Burp Suite</span>
-              <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">AppSec Audits</span>
+              <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Git / GitHub</span>
+              <span class="px-2.5 py-1 text-xs rounded bg-slate-800 text-slate-300">Vulnerability Scans</span>
             </div>
           </div>
         </div>
@@ -161,15 +170,15 @@
                 <span class="text-xs text-blue-400 font-mono font-semibold">Web App • Commerce</span>
                 <i class="fas fa-receipt text-slate-500"></i>
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">Smart Retail Billing &amp; Inventory Suite</h4>
+              <h4 class="text-lg font-bold text-white mb-2">Retail Point of Sale &amp; Billing App</h4>
               <p class="text-xs text-slate-400 leading-relaxed mb-6">
-                Lightweight point-of-sale system featuring immediate barcode itemization, real-time tax calculation, inventory status counters, and thermal receipt print formatting.
+                A lightweight POS and inventory management platform equipped with instant barcode line itemization, dynamic tax calculation, and thermal receipt print export.
               </p>
             </div>
             <div class="flex flex-wrap gap-2 text-xs">
               <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">React</span>
-              <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Tailwind CSS</span>
-              <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Local Storage</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Tailwind</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">LocalStorage</span>
             </div>
           </div>
 
@@ -179,15 +188,15 @@
                 <span class="text-xs text-blue-400 font-mono font-semibold">CLI Tool • Automation</span>
                 <i class="fas fa-terminal text-slate-500"></i>
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">Automated OSINT &amp; Data Parser</h4>
+              <h4 class="text-lg font-bold text-white mb-2">Automated OSINT &amp; Contact Extractor</h4>
               <p class="text-xs text-slate-400 leading-relaxed mb-6">
-                Python terminal utility designed to traverse deep nested JSON payloads, extracting contact entities, emails, and endpoints into clean organized CSV records.
+                Command-line script built to traverse and parse deep nested JSON dumps, isolating verified emails, phone numbers, and endpoint routes into structured formats.
               </p>
             </div>
             <div class="flex flex-wrap gap-2 text-xs">
               <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Python 3</span>
               <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Regex</span>
-              <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">CLI</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Data Parsing</span>
             </div>
           </div>
         </div>
@@ -200,61 +209,128 @@
         <h2 class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-2">Connect</h2>
         <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">Let's Connect</h3>
         <p class="text-sm text-slate-400 mb-8">
-          Have an opportunity, project collaboration, or just want to talk software engineering and security? Feel free to connect directly.
+          Interested in full-stack engineering collaborations or cybersecurity audits? Connect with me directly on LinkedIn.
         </p>
-        <a href="https://in.linkedin.com/in/shabhith-krishna-b66256229" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition">
+        <a href="https://in.linkedin.com/in/shabhith-krishna-b66256229" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition shadow-lg shadow-blue-500/25">
           <i class="fab fa-linkedin"></i> Connect on LinkedIn
         </a>
       </div>
     </section>
   </main>
 
-  <!-- ==================== GAMING ARCADE VIEW ==================== -->
-  <section id="gaming-view" class="pt-20 pb-16 px-4 hidden">
+  <!-- ===================================================== -->
+  <!-- 2. MARIO PLATFORMER VIEW                             -->
+  <!-- ===================================================== -->
+  <section id="mario-view" class="pt-20 pb-16 px-4 hidden">
     <div class="max-w-4xl mx-auto">
-      <!-- Arcade Header -->
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 glass p-5 rounded-2xl border border-slate-800">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 glass p-4 rounded-2xl border border-slate-800">
         <div>
-          <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-green-400 tracking-wider font-mono">
+          <h2 class="text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-yellow-400 to-green-400 tracking-wider font-mono">
             ★ SUPER MARIO CANVAS ARCADE ★
           </h2>
           <p class="text-xs text-slate-400 mt-1">
             Controls: <span class="text-amber-400 font-semibold">[← / →]</span> Move &bull; <span class="text-amber-400 font-semibold">[Space / ↑ / W]</span> Jump &bull; <span class="text-amber-400 font-semibold">[Shift]</span> Run
           </p>
         </div>
-        <div class="flex items-center gap-3">
-          <button id="sound-btn" onclick="toggleAudio()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold flex items-center gap-1.5 transition border border-slate-700">
-            <i id="sound-icon" class="fas fa-volume-up text-blue-400"></i> <span id="sound-text">Sound: ON</span>
+        <div class="flex items-center gap-2">
+          <button onclick="toggleAudio()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold flex items-center gap-1.5 transition border border-slate-700">
+            <i class="fas fa-volume-up sound-icon text-blue-400"></i> <span class="sound-text">Sound: ON</span>
           </button>
-          <button onclick="resetGame()" class="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 text-white text-xs font-semibold flex items-center gap-1.5 transition">
+          <button onclick="resetMarioGame(true)" class="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 text-white text-xs font-semibold flex items-center gap-1.5 transition">
             <i class="fas fa-rotate-right"></i> Restart
           </button>
         </div>
       </div>
 
-      <!-- Game Canvas Container -->
       <div class="relative bg-slate-900 border-4 border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col items-center">
-        <!-- In-Game HUD -->
-        <div class="w-full bg-black/90 py-2.5 px-6 flex justify-between items-center text-xs font-mono font-bold tracking-widest text-white border-b-2 border-slate-800">
+        <!-- Mario HUD -->
+        <div class="w-full bg-black/90 py-2 px-6 flex justify-between items-center text-xs font-mono font-bold tracking-widest text-white border-b-2 border-slate-800">
           <div class="text-red-400">MARIO<br><span id="hud-score" class="text-white">000000</span></div>
           <div class="text-yellow-400">COINS<br><span id="hud-coins" class="text-white">× 00</span></div>
           <div class="text-emerald-400">WORLD<br><span class="text-white">1 - 1</span></div>
           <div class="text-amber-400">LIVES<br><span id="hud-lives" class="text-white">× 3</span></div>
         </div>
 
-        <!-- The Canvas -->
         <canvas id="mario-canvas" width="800" height="400" class="w-full max-w-[800px] h-auto block bg-[#5c94fc] cursor-pointer"></canvas>
 
-        <!-- On-Screen Virtual Controls for Mobile / Tablets -->
+        <!-- Touch Controls -->
         <div class="w-full bg-slate-950 p-4 border-t border-slate-800 flex justify-between items-center select-none sm:hidden">
           <div class="flex gap-2">
-            <button id="btn-left" class="nes-btn w-14 h-14 bg-slate-800 active:bg-slate-700 text-white rounded-xl text-xl flex items-center justify-center font-bold">◀</button>
-            <button id="btn-right" class="nes-btn w-14 h-14 bg-slate-800 active:bg-slate-700 text-white rounded-xl text-xl flex items-center justify-center font-bold">▶</button>
+            <button id="mario-btn-left" class="arcade-btn w-14 h-14 bg-slate-800 active:bg-slate-700 text-white rounded-xl text-xl flex items-center justify-center font-bold">◀</button>
+            <button id="mario-btn-right" class="arcade-btn w-14 h-14 bg-slate-800 active:bg-slate-700 text-white rounded-xl text-xl flex items-center justify-center font-bold">▶</button>
           </div>
           <div class="flex gap-2">
-            <button id="btn-run" class="nes-btn w-12 h-12 bg-amber-600 active:bg-amber-500 text-white rounded-full text-xs font-bold flex items-center justify-center">B</button>
-            <button id="btn-jump" class="nes-btn w-14 h-14 bg-red-600 active:bg-red-500 text-white rounded-full text-sm font-bold flex items-center justify-center">A</button>
+            <button id="mario-btn-run" class="arcade-btn w-12 h-12 bg-amber-600 active:bg-amber-500 text-white rounded-full text-xs font-bold flex items-center justify-center">RUN</button>
+            <button id="mario-btn-jump" class="arcade-btn w-14 h-14 bg-red-600 active:bg-red-500 text-white rounded-full text-sm font-bold flex items-center justify-center">JUMP</button>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- 3. HILL CLIMB RACING VIEW (MOJO XT300 & PAJERO)       -->
+  <!-- ===================================================== -->
+  <section id="hillclimb-view" class="pt-20 pb-16 px-4 hidden">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 glass p-4 rounded-2xl border border-slate-800">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-yellow-400 to-amber-500 tracking-wider font-mono">
+            ★ HILL CLIMB OFF-ROAD RALLY ★
+          </h2>
+          <p class="text-xs text-slate-400 mt-1">
+            Controls: <span class="text-amber-400 font-semibold">[→ / D]</span> Gas &bull; <span class="text-amber-400 font-semibold">[← / A]</span> Brake/Tilt Back &bull; <span class="text-amber-400 font-semibold">[R]</span> Reset
+          </p>
+        </div>
+
+        <!-- Vehicle Chooser -->
+        <div class="flex items-center gap-3">
+          <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800">
+            <button id="choose-mojo" onclick="selectVehicle('mojo')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-amber-500 text-slate-950 flex items-center gap-1.5">
+              <i class="fas fa-motorcycle"></i> Mojo XT300
+            </button>
+            <button id="choose-pajero" onclick="selectVehicle('pajero')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white flex items-center gap-1.5">
+              <i class="fas fa-truck-monster"></i> Pajero 4x4
+            </button>
+          </div>
+
+          <button onclick="resetHillClimb()" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center gap-1.5 transition">
+            <i class="fas fa-rotate-right"></i> Restart
+          </button>
+        </div>
+      </div>
+
+      <!-- Hill Climb Screen -->
+      <div class="relative bg-slate-900 border-4 border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col items-center">
+        <!-- Hill Climb HUD -->
+        <div class="w-full bg-black/90 py-2.5 px-6 flex justify-between items-center text-xs font-mono font-bold tracking-widest border-b-2 border-slate-800">
+          <div class="text-emerald-400">DISTANCE<br><span id="hc-distance" class="text-white text-sm">0 m</span></div>
+          <div class="text-amber-400">COINS<br><span id="hc-coins" class="text-white text-sm">0</span></div>
+          
+          <!-- Fuel Gauge Bar -->
+          <div class="w-40 sm:w-56 text-left">
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-red-400"><i class="fas fa-gas-pump"></i> FUEL</span>
+              <span id="hc-fuel-text" class="text-white">100%</span>
+            </div>
+            <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
+              <div id="hc-fuel-bar" class="h-full bg-gradient-to-r from-red-500 via-amber-400 to-green-500 transition-all" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <div class="text-blue-400 text-right">RIDE<br><span id="hc-vehicle-label" class="text-amber-400 text-sm">Mojo XT300</span></div>
+        </div>
+
+        <canvas id="hillclimb-canvas" width="800" height="420" class="w-full max-w-[800px] h-auto block bg-sky-300 cursor-pointer"></canvas>
+
+        <!-- Touch Controls for Hill Climb -->
+        <div class="w-full bg-slate-950 p-4 border-t border-slate-800 flex justify-between items-center select-none sm:hidden">
+          <button id="hc-btn-brake" class="arcade-btn w-20 h-14 bg-red-800 active:bg-red-700 text-white rounded-xl text-xs font-bold flex items-center justify-center">
+            BRAKE / TILT
+          </button>
+          <button id="hc-btn-gas" class="arcade-btn w-20 h-14 bg-emerald-600 active:bg-emerald-500 text-white rounded-xl text-xs font-bold flex items-center justify-center">
+            GAS / ACCEL
+          </button>
         </div>
       </div>
     </div>
@@ -265,30 +341,13 @@
     <p>&copy; 2026 Shabhith Krishna. Built with HTML5 Canvas &amp; Tailwind CSS.</p>
   </footer>
 
-  <!-- ==================== GAME ENGINE & PAGE LOGIC ==================== -->
+  <!-- ===================================================== -->
+  <!-- SCRIPT LOGIC (VIEW CONTROLLER & BOTH GAME ENGINES)    -->
+  <!-- ===================================================== -->
   <script>
-    // --- Navigation Switching ---
-    function switchView(view) {
-      const portfolio = document.getElementById('portfolio-view');
-      const gaming = document.getElementById('gaming-view');
-      const portBtn = document.getElementById('tab-portfolio-btn');
-      const gameBtn = document.getElementById('tab-gaming-btn');
-
-      if (view === 'gaming') {
-        portfolio.classList.add('hidden');
-        gaming.classList.remove('hidden');
-        gameBtn.className = "px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition bg-red-600 text-white shadow-sm flex items-center gap-1.5";
-        portBtn.className = "px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition text-slate-400 hover:text-white flex items-center gap-1.5";
-        initAudio();
-      } else {
-        gaming.classList.add('hidden');
-        portfolio.classList.remove('hidden');
-        portBtn.className = "px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition bg-blue-600 text-white shadow-sm flex items-center gap-1.5";
-        gameBtn.className = "px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition text-slate-400 hover:text-white flex items-center gap-1.5";
-      }
-    }
-
-    // --- Web Audio 8-Bit Synthesizer ---
+    // ==========================================
+    // 1. Audio & View Navigation
+    // ==========================================
     let audioCtx = null;
     let soundEnabled = true;
 
@@ -303,19 +362,19 @@
 
     function toggleAudio() {
       soundEnabled = !soundEnabled;
-      document.getElementById('sound-text').innerText = soundEnabled ? 'Sound: ON' : 'Sound: OFF';
-      document.getElementById('sound-icon').className = soundEnabled ? 'fas fa-volume-up text-blue-400' : 'fas fa-volume-mute text-slate-500';
+      document.querySelectorAll('.sound-text').forEach(el => el.innerText = soundEnabled ? 'Sound: ON' : 'Sound: OFF');
+      document.querySelectorAll('.sound-icon').forEach(el => el.className = soundEnabled ? 'fas fa-volume-up sound-icon text-blue-400' : 'fas fa-volume-mute sound-icon text-slate-500');
       if (soundEnabled) initAudio();
     }
 
-    function playTone(freq, type, duration, delay = 0) {
+    function playTone(freq, type, duration, delay = 0, volume = 0.08) {
       if (!soundEnabled || !audioCtx) return;
       try {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = type;
         osc.frequency.setValueAtTime(freq, audioCtx.currentTime + delay);
-        gain.gain.setValueAtTime(0.08, audioCtx.currentTime + delay);
+        gain.gain.setValueAtTime(volume, audioCtx.currentTime + delay);
         gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + delay + duration);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
@@ -324,612 +383,897 @@
       } catch (e) {}
     }
 
-    const sfx = {
-      jump: () => {
-        if (!soundEnabled) return;
+    function switchView(view) {
+      document.getElementById('portfolio-view').classList.add('hidden');
+      document.getElementById('mario-view').classList.add('hidden');
+      document.getElementById('hillclimb-view').classList.add('hidden');
+
+      const portBtn = document.getElementById('tab-portfolio-btn');
+      const marioBtn = document.getElementById('tab-mario-btn');
+      const hillBtn = document.getElementById('tab-hillclimb-btn');
+
+      // reset button styles
+      [portBtn, marioBtn, hillBtn].forEach(b => {
+        b.className = "px-3 sm:px-4 py-1.5 rounded-full transition text-slate-400 hover:text-white flex items-center gap-1.5";
+      });
+
+      if (view === 'portfolio') {
+        document.getElementById('portfolio-view').classList.remove('hidden');
+        portBtn.className = "px-3 sm:px-4 py-1.5 rounded-full transition bg-blue-600 text-white shadow-sm flex items-center gap-1.5";
+      } else if (view === 'mario') {
+        document.getElementById('mario-view').classList.remove('hidden');
+        marioBtn.className = "px-3 sm:px-4 py-1.5 rounded-full transition bg-red-600 text-white shadow-sm flex items-center gap-1.5";
         initAudio();
-        playTone(180, 'square', 0.12);
-        playTone(330, 'square', 0.18, 0.05);
-      },
-      coin: () => {
-        if (!soundEnabled) return;
+      } else if (view === 'hillclimb') {
+        document.getElementById('hillclimb-view').classList.remove('hidden');
+        hillBtn.className = "px-3 sm:px-4 py-1.5 rounded-full transition bg-emerald-600 text-white shadow-sm flex items-center gap-1.5";
         initAudio();
-        playTone(987, 'square', 0.08);
-        playTone(1318, 'square', 0.35, 0.08);
-      },
-      stomp: () => {
-        if (!soundEnabled) return;
-        initAudio();
-        playTone(140, 'triangle', 0.1);
-        playTone(80, 'triangle', 0.15, 0.05);
-      },
-      bump: () => {
-        if (!soundEnabled) return;
-        initAudio();
-        playTone(120, 'square', 0.08);
-      },
-      win: () => {
-        if (!soundEnabled) return;
-        initAudio();
-        const notes = [330, 392, 659, 523, 587, 784];
-        notes.forEach((f, idx) => playTone(f, 'square', 0.25, idx * 0.14));
-      },
-      die: () => {
-        if (!soundEnabled) return;
-        initAudio();
-        playTone(500, 'triangle', 0.15);
-        playTone(300, 'triangle', 0.15, 0.15);
-        playTone(150, 'sawtooth', 0.35, 0.3);
       }
-    };
+    }
 
-    // --- Super Mario Canvas Engine ---
-    const canvas = document.getElementById('mario-canvas');
-    const ctx = canvas.getContext('2d');
+    // ==========================================
+    // 2. SUPER MARIO GAME ENGINE
+    // ==========================================
+    const marioCanvas = document.getElementById('mario-canvas');
+    const marioCtx = marioCanvas.getContext('2d');
+    const MARIO_GROUND_Y = 340;
+    let marioCameraX = 0;
+    let marioScore = 0;
+    let marioCoins = 0;
+    let marioLives = 3;
+    let marioState = 'PLAYING';
 
-    const LEVEL_WIDTH = 3400;
-    const GROUND_Y = 340;
-    let cameraX = 0;
-    let score = 0;
-    let coinsCount = 0;
-    let lives = 3;
-    let gameState = 'PLAYING'; // 'PLAYING', 'WON', 'GAMEOVER'
-
-    const keys = {
-      left: false,
-      right: false,
-      jump: false,
-      run: false
-    };
-
-    // Player Object
-    const mario = {
-      x: 60,
-      y: 280,
-      w: 24,
-      h: 32,
-      vx: 0,
-      vy: 0,
-      grounded: false,
-      facingRight: true,
-      walkFrame: 0,
-      isDying: false,
-      deathTimer: 0
-    };
-
-    let blocks = [];
-    let enemies = [];
-    let particles = [];
+    const marioKeys = { left: false, right: false, jump: false, run: false };
+    const mario = { x: 60, y: 280, w: 24, h: 32, vx: 0, vy: 0, grounded: false, facingRight: true, walkFrame: 0 };
+    let marioBlocks = [];
+    let marioEnemies = [];
+    let marioParticles = [];
     let flagpole = { x: 3050, y: 120, w: 10, h: 220, flagY: 130 };
 
-    function createLevel() {
-      blocks = [];
-      enemies = [];
-      particles = [];
-
-      // Ground segments
-      blocks.push({ x: 0, y: GROUND_Y, w: 900, h: 60, type: 'ground' });
-      blocks.push({ x: 960, y: GROUND_Y, w: 750, h: 60, type: 'ground' });
-      blocks.push({ x: 1780, y: GROUND_Y, w: 900, h: 60, type: 'ground' });
-      blocks.push({ x: 2740, y: GROUND_Y, w: 660, h: 60, type: 'ground' });
-
-      // Pipes
-      const pipes = [
-        { x: 320, h: 48 },
-        { x: 620, h: 68 },
-        { x: 1240, h: 80 },
-        { x: 2100, h: 56 },
-        { x: 2550, h: 80 }
-      ];
-      pipes.forEach(p => {
-        blocks.push({ x: p.x, y: GROUND_Y - p.h, w: 46, h: p.h, type: 'pipe' });
-      });
-
-      // Brick & Question Blocks
-      const blockData = [
-        { x: 220, y: 220, type: 'q', content: 'coin' },
-        { x: 250, y: 220, type: 'brick' },
-        { x: 280, y: 220, type: 'q', content: 'coin' },
-        { x: 310, y: 220, type: 'brick' },
-
-        { x: 740, y: 220, type: 'brick' },
-        { x: 770, y: 220, type: 'q', content: 'coin' },
-        { x: 800, y: 220, type: 'brick' },
-        { x: 770, y: 120, type: 'q', content: 'coin' },
-
-        { x: 1400, y: 220, type: 'brick' },
-        { x: 1430, y: 220, type: 'q', content: 'coin' },
-        { x: 1460, y: 220, type: 'brick' },
-        { x: 1490, y: 220, type: 'q', content: 'coin' },
-        { x: 1520, y: 220, type: 'brick' },
-
-        // High stairs towards finish
-        { x: 2850, y: 310, type: 'brick' },
-        { x: 2880, y: 310, type: 'brick' },
-        { x: 2880, y: 280, type: 'brick' },
-        { x: 2910, y: 310, type: 'brick' },
-        { x: 2910, y: 280, type: 'brick' },
-        { x: 2910, y: 250, type: 'brick' }
+    function createMarioLevel() {
+      marioBlocks = [
+        { x: 0, y: MARIO_GROUND_Y, w: 900, h: 60, type: 'ground' },
+        { x: 960, y: MARIO_GROUND_Y, w: 750, h: 60, type: 'ground' },
+        { x: 1780, y: MARIO_GROUND_Y, w: 900, h: 60, type: 'ground' },
+        { x: 2740, y: MARIO_GROUND_Y, w: 660, h: 60, type: 'ground' }
       ];
 
-      blockData.forEach(b => {
-        blocks.push({
-          x: b.x,
-          y: b.y,
-          w: 30,
-          h: 30,
-          type: b.type,
-          content: b.content || null,
-          hit: false,
-          bounceY: 0
-        });
-      });
+      const pipes = [{ x: 320, h: 48 }, { x: 620, h: 68 }, { x: 1240, h: 80 }, { x: 2100, h: 56 }, { x: 2550, h: 80 }];
+      pipes.forEach(p => marioBlocks.push({ x: p.x, y: MARIO_GROUND_Y - p.h, w: 46, h: p.h, type: 'pipe' }));
 
-      // Goomba Enemies
-      const enemySpots = [380, 500, 830, 1150, 1340, 1500, 1920, 2240, 2400];
-      enemySpots.forEach(x => {
-        enemies.push({
-          x: x,
-          y: GROUND_Y - 26,
-          w: 26,
-          h: 26,
-          vx: -1.2,
-          squished: false,
-          squishTimer: 0
-        });
+      const blocks = [
+        { x: 220, y: 220, type: 'q' }, { x: 250, y: 220, type: 'brick' }, { x: 280, y: 220, type: 'q' }, { x: 310, y: 220, type: 'brick' },
+        { x: 740, y: 220, type: 'brick' }, { x: 770, y: 220, type: 'q' }, { x: 800, y: 220, type: 'brick' }, { x: 770, y: 120, type: 'q' },
+        { x: 1400, y: 220, type: 'brick' }, { x: 1430, y: 220, type: 'q' }, { x: 1460, y: 220, type: 'brick' }, { x: 1490, y: 220, type: 'q' }
+      ];
+      blocks.forEach(b => marioBlocks.push({ x: b.x, y: b.y, w: 30, h: 30, type: b.type, hit: false, bounceY: 0 }));
+
+      marioEnemies = [];
+      [380, 520, 830, 1150, 1340, 1500, 1920, 2240].forEach(x => {
+        marioEnemies.push({ x: x, y: MARIO_GROUND_Y - 26, w: 26, h: 26, vx: -1.2, squished: false, squishTimer: 0 });
       });
     }
 
-    function resetGame(fullReset = false) {
-      if (fullReset) {
-        lives = 3;
-        score = 0;
-        coinsCount = 0;
-      }
-      mario.x = 60;
-      mario.y = 280;
-      mario.vx = 0;
-      mario.vy = 0;
-      mario.grounded = false;
-      mario.isDying = false;
-      mario.deathTimer = 0;
-      cameraX = 0;
-      gameState = 'PLAYING';
+    function resetMarioGame(fullReset = false) {
+      if (fullReset) { marioLives = 3; marioScore = 0; marioCoins = 0; }
+      mario.x = 60; mario.y = 280; mario.vx = 0; mario.vy = 0; mario.grounded = false;
+      marioCameraX = 0;
+      marioState = 'PLAYING';
       flagpole.flagY = 130;
-      createLevel();
-      updateHUD();
+      createMarioLevel();
+      updateMarioHUD();
     }
 
-    function updateHUD() {
-      document.getElementById('hud-score').innerText = String(score).padStart(6, '0');
-      document.getElementById('hud-coins').innerText = `× ${String(coinsCount).padStart(2, '0')}`;
-      document.getElementById('hud-lives').innerText = `× ${lives}`;
+    function updateMarioHUD() {
+      document.getElementById('hud-score').innerText = String(marioScore).padStart(6, '0');
+      document.getElementById('hud-coins').innerText = `× ${String(marioCoins).padStart(2, '0')}`;
+      document.getElementById('hud-lives').innerText = `× ${marioLives}`;
     }
 
-    // --- Input Handlers ---
+    function updateMario() {
+      if (marioState !== 'PLAYING') return;
+
+      const speed = marioKeys.run ? 4.5 : 3.0;
+      if (marioKeys.right) { mario.vx = speed; mario.facingRight = true; mario.walkFrame += 0.2; }
+      else if (marioKeys.left) { mario.vx = -speed; mario.facingRight = false; mario.walkFrame += 0.2; }
+      else { mario.vx *= 0.8; if (Math.abs(mario.vx) < 0.1) mario.vx = 0; }
+
+      if (marioKeys.jump && mario.grounded) {
+        mario.vy = -12.5;
+        mario.grounded = false;
+        playTone(220, 'square', 0.1); playTone(390, 'square', 0.15, 0.04);
+      }
+
+      mario.vy += 0.65;
+      if (mario.vy > 12) mario.vy = 12;
+
+      // X movement & collision
+      mario.x += mario.vx;
+      if (mario.x < marioCameraX) mario.x = marioCameraX;
+      marioBlocks.forEach(b => {
+        if (checkOverlap(mario, b)) {
+          if (mario.vx > 0) mario.x = b.x - mario.w;
+          else if (mario.vx < 0) mario.x = b.x + b.w;
+        }
+      });
+
+      // Y movement & collision
+      mario.y += mario.vy;
+      mario.grounded = false;
+      marioBlocks.forEach(b => {
+        if (checkOverlap(mario, b)) {
+          if (mario.vy > 0 && (mario.y + mario.h - mario.vy) <= b.y + 6) {
+            mario.y = b.y - mario.h;
+            mario.vy = 0;
+            mario.grounded = true;
+          } else if (mario.vy < 0 && (mario.y - mario.vy) >= b.y + b.h - 8) {
+            mario.y = b.y + b.h;
+            mario.vy = 0;
+            if (b.type === 'q' && !b.hit) {
+              b.hit = true;
+              b.bounceY = -8;
+              marioCoins++;
+              marioScore += 100;
+              updateMarioHUD();
+              playTone(987, 'square', 0.08); playTone(1318, 'square', 0.25, 0.06);
+              marioParticles.push({ x: b.x + 8, y: b.y - 12, vy: -5, life: 25 });
+            }
+          }
+        }
+      });
+
+      if (mario.y > 420) {
+        marioLives--;
+        updateMarioHUD();
+        playTone(150, 'sawtooth', 0.35);
+        if (marioLives <= 0) marioState = 'GAMEOVER'; else resetMarioGame(false);
+      }
+
+      // Check Flagpole
+      if (mario.x >= flagpole.x - 12 && mario.x <= flagpole.x + flagpole.w + 12) {
+        marioState = 'WON';
+        marioScore += 5000;
+        updateMarioHUD();
+        [330, 392, 659, 523, 784].forEach((f, idx) => playTone(f, 'square', 0.2, idx * 0.12));
+      }
+
+      if (mario.x - marioCameraX > 380) marioCameraX = mario.x - 380;
+
+      // Enemies
+      marioEnemies.forEach(e => {
+        if (e.squished) { e.squishTimer++; return; }
+        if (e.x > marioCameraX - 100 && e.x < marioCameraX + 900) {
+          e.x += e.vx;
+          marioBlocks.forEach(b => {
+            if (checkOverlap(e, b)) {
+              if (e.vx > 0) { e.x = b.x - e.w; e.vx = -e.vx; }
+              else { e.x = b.x + b.w; e.vx = -e.vx; }
+            }
+          });
+          if (checkOverlap(mario, e)) {
+            if (mario.vy > 0 && (mario.y + mario.h - mario.vy) <= e.y + 12) {
+              e.squished = true;
+              mario.vy = -8.5;
+              marioScore += 200;
+              updateMarioHUD();
+              playTone(140, 'triangle', 0.1);
+            } else {
+              marioLives--;
+              updateMarioHUD();
+              playTone(150, 'sawtooth', 0.35);
+              if (marioLives <= 0) marioState = 'GAMEOVER'; else resetMarioGame(false);
+            }
+          }
+        }
+      });
+      marioEnemies = marioEnemies.filter(e => !e.squished || e.squishTimer < 30);
+      marioBlocks.forEach(b => { if (b.bounceY < 0) b.bounceY += 1.5; });
+      marioParticles.forEach(p => { p.y += p.vy; p.vy += 0.4; p.life--; });
+      marioParticles = marioParticles.filter(p => p.life > 0);
+    }
+
+    function checkOverlap(r1, r2) {
+      return r1.x < r2.x + r2.w && r1.x + r1.w > r2.x && r1.y < r2.y + r2.h && r1.y + r1.h > r2.y;
+    }
+
+    function renderMario() {
+      marioCtx.clearRect(0, 0, marioCanvas.width, marioCanvas.height);
+      marioCtx.save();
+      marioCtx.translate(-marioCameraX, 0);
+
+      // Clouds
+      marioCtx.fillStyle = '#fff';
+      [150, 500, 950, 1400, 1850, 2300, 2800].forEach(cx => {
+        marioCtx.beginPath();
+        marioCtx.arc(cx, 60, 20, 0, Math.PI * 2);
+        marioCtx.arc(cx + 20, 50, 24, 0, Math.PI * 2);
+        marioCtx.arc(cx + 40, 60, 20, 0, Math.PI * 2);
+        marioCtx.fill();
+      });
+
+      // Blocks
+      marioBlocks.forEach(b => {
+        const renderY = b.y + (b.bounceY || 0);
+        if (b.type === 'ground') {
+          marioCtx.fillStyle = '#C84C0C'; marioCtx.fillRect(b.x, renderY, b.w, b.h);
+          marioCtx.fillStyle = '#00A800'; marioCtx.fillRect(b.x, renderY, b.w, 6);
+        } else if (b.type === 'pipe') {
+          marioCtx.fillStyle = '#00A800'; marioCtx.fillRect(b.x, renderY, b.w, b.h);
+          marioCtx.fillStyle = '#00D800'; marioCtx.fillRect(b.x - 3, renderY, b.w + 6, 14);
+        } else if (b.type === 'brick') {
+          marioCtx.fillStyle = '#B84418'; marioCtx.fillRect(b.x, renderY, b.w, b.h);
+        } else if (b.type === 'q') {
+          marioCtx.fillStyle = b.hit ? '#9C7A54' : '#FC9838'; marioCtx.fillRect(b.x, renderY, b.w, b.h);
+          if (!b.hit) {
+            marioCtx.fillStyle = '#000'; marioCtx.font = 'bold 18px monospace'; marioCtx.fillText('?', b.x + 9, renderY + 22);
+          }
+        }
+      });
+
+      // Flag & Castle
+      marioCtx.fillStyle = '#808080'; marioCtx.fillRect(flagpole.x, flagpole.y, flagpole.w, flagpole.h);
+      marioCtx.fillStyle = '#00A800'; marioCtx.fillRect(flagpole.x - 20, flagpole.flagY, 20, 16);
+      marioCtx.fillStyle = '#D07030'; marioCtx.fillRect(3150, MARIO_GROUND_Y - 90, 110, 90);
+      marioCtx.fillStyle = '#000'; marioCtx.fillRect(3190, MARIO_GROUND_Y - 45, 30, 45);
+
+      // Coins particles
+      marioCtx.fillStyle = '#FFD700';
+      marioParticles.forEach(p => {
+        marioCtx.beginPath(); marioCtx.arc(p.x + 6, p.y, 8, 0, Math.PI * 2); marioCtx.fill();
+      });
+
+      // Enemies
+      marioEnemies.forEach(e => {
+        if (e.squished) {
+          marioCtx.fillStyle = '#9C4A00'; marioCtx.fillRect(e.x, e.y + 16, e.w, 10);
+        } else {
+          marioCtx.fillStyle = '#B85418'; marioCtx.fillRect(e.x + 2, e.y, e.w - 4, e.h - 6);
+          marioCtx.fillStyle = '#000';
+          marioCtx.fillRect(e.x, e.y + e.h - 6, 8, 6);
+          marioCtx.fillRect(e.x + e.w - 8, e.y + e.h - 6, 8, 6);
+        }
+      });
+
+      // Mario Draw
+      marioCtx.save();
+      let mx = mario.x, my = mario.y;
+      if (!mario.facingRight) {
+        marioCtx.translate(mx + mario.w, my);
+        marioCtx.scale(-1, 1);
+        mx = 0; my = 0;
+      }
+      marioCtx.fillStyle = '#E52521'; marioCtx.fillRect(mx + 4, my, 16, 6);
+      marioCtx.fillStyle = '#FCCC98'; marioCtx.fillRect(mx + 4, my + 6, 16, 10);
+      marioCtx.fillStyle = '#E52521'; marioCtx.fillRect(mx + 4, my + 16, 16, 8);
+      marioCtx.fillStyle = '#0026C8'; marioCtx.fillRect(mx + 6, my + 18, 12, 10);
+      marioCtx.fillStyle = '#6A3805'; marioCtx.fillRect(mx + 2, my + 28, 8, 4); marioCtx.fillRect(mx + 14, my + 28, 8, 4);
+      marioCtx.restore();
+
+      marioCtx.restore();
+
+      if (marioState === 'WON') {
+        marioCtx.fillStyle = 'rgba(0,0,0,0.7)'; marioCtx.fillRect(0, 0, marioCanvas.width, marioCanvas.height);
+        marioCtx.fillStyle = '#FFD700'; marioCtx.font = 'bold 30px monospace'; marioCtx.textAlign = 'center';
+        marioCtx.fillText('STAGE CLEAR! YOU WIN!', 400, 200);
+      } else if (marioState === 'GAMEOVER') {
+        marioCtx.fillStyle = 'rgba(0,0,0,0.8)'; marioCtx.fillRect(0, 0, marioCanvas.width, marioCanvas.height);
+        marioCtx.fillStyle = '#FF3333'; marioCtx.font = 'bold 34px monospace'; marioCtx.textAlign = 'center';
+        marioCtx.fillText('GAME OVER', 400, 200);
+      }
+    }
+
+    // ==========================================
+    // 3. HILL CLIMB RACING ENGINE (MOJO & PAJERO)
+    // ==========================================
+    const hcCanvas = document.getElementById('hillclimb-canvas');
+    const hcCtx = hcCanvas.getContext('2d');
+
+    let currentVehicle = 'mojo'; // 'mojo' | 'pajero'
+    let hcDistance = 0;
+    let hcCoins = 0;
+    let hcFuel = 100;
+    let hcState = 'PLAYING'; // 'PLAYING' | 'CRASHED' | 'OUTOFFUEL'
+
+    const hcKeys = { gas: false, brake: false };
+
+    // Vehicle Physics State
+    const vehicle = {
+      x: 100,
+      y: 200,
+      vx: 0,
+      vy: 0,
+      angle: 0,
+      angularVel: 0,
+      wheelRot: 0,
+      rearWheelGrounded: false,
+      frontWheelGrounded: false
+    };
+
+    // Terrain generator using layered sine waves
+    function getTerrainHeight(worldX) {
+      if (worldX < 60) return 260;
+      const h1 = Math.sin(worldX * 0.005) * 45;
+      const h2 = Math.sin(worldX * 0.015) * 30;
+      const h3 = Math.sin(worldX * 0.035) * 15;
+      const steepHills = Math.sin(worldX * 0.0018) * 60;
+      return 270 + h1 + h2 + h3 + steepHills;
+    }
+
+    function getTerrainSlope(worldX) {
+      const step = 2;
+      const y1 = getTerrainHeight(worldX - step);
+      const y2 = getTerrainHeight(worldX + step);
+      return Math.atan2(y2 - y1, step * 2);
+    }
+
+    // Collectibles & fuel cans
+    let hcPickups = [];
+    function generatePickups() {
+      hcPickups = [];
+      for (let x = 300; x < 6000; x += 160) {
+        if (Math.random() < 0.25) {
+          hcPickups.push({ x: x, type: 'fuel', collected: false });
+        } else {
+          hcPickups.push({ x: x, type: 'coin', collected: false });
+        }
+      }
+    }
+
+    function selectVehicle(type) {
+      currentVehicle = type;
+      const mojoBtn = document.getElementById('choose-mojo');
+      const pajeroBtn = document.getElementById('choose-pajero');
+      const label = document.getElementById('hc-vehicle-label');
+
+      if (type === 'mojo') {
+        mojoBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition bg-amber-500 text-slate-950 flex items-center gap-1.5";
+        pajeroBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white flex items-center gap-1.5";
+        label.innerText = 'Mojo XT300';
+      } else {
+        pajeroBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition bg-emerald-500 text-slate-950 flex items-center gap-1.5";
+        mojoBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white flex items-center gap-1.5";
+        label.innerText = 'Pajero 4x4';
+      }
+      resetHillClimb();
+    }
+
+    function resetHillClimb() {
+      vehicle.x = 100;
+      vehicle.y = getTerrainHeight(100) - 40;
+      vehicle.vx = 0;
+      vehicle.vy = 0;
+      vehicle.angle = 0;
+      vehicle.angularVel = 0;
+      vehicle.wheelRot = 0;
+      hcFuel = 100;
+      hcDistance = 0;
+      hcCoins = 0;
+      hcState = 'PLAYING';
+      generatePickups();
+      updateHillClimbHUD();
+    }
+
+    function updateHillClimbHUD() {
+      document.getElementById('hc-distance').innerText = `${Math.max(0, Math.floor(vehicle.x / 10))} m`;
+      document.getElementById('hc-coins').innerText = `${hcCoins}`;
+      document.getElementById('hc-fuel-text').innerText = `${Math.max(0, Math.floor(hcFuel))}%`;
+      document.getElementById('hc-fuel-bar').style.width = `${Math.max(0, hcFuel)}%`;
+    }
+
+    function updateHillClimb() {
+      if (hcState !== 'PLAYING') return;
+
+      const isMojo = currentVehicle === 'mojo';
+      const wheelBase = isMojo ? 34 : 46;
+      const wheelRadius = isMojo ? 11 : 14;
+      const power = isMojo ? 0.38 : 0.45;
+      const topSpeed = isMojo ? 11 : 9.5;
+
+      // Fuel consumption
+      if (hcKeys.gas) {
+        hcFuel -= 0.08;
+      } else {
+        hcFuel -= 0.015;
+      }
+      if (hcFuel <= 0) {
+        hcFuel = 0;
+        hcState = 'OUTOFFUEL';
+        playTone(180, 'sawtooth', 0.4);
+      }
+
+      // Wheel Positions in World Space
+      const cosA = Math.cos(vehicle.angle);
+      const sinA = Math.sin(vehicle.angle);
+
+      const rwx = vehicle.x - (wheelBase / 2) * cosA;
+      const rwy = vehicle.y - (wheelBase / 2) * sinA + 8;
+
+      const fwx = vehicle.x + (wheelBase / 2) * cosA;
+      const fwy = vehicle.y + (wheelBase / 2) * sinA + 8;
+
+      const groundRear = getTerrainHeight(rwx);
+      const groundFront = getTerrainHeight(fwx);
+
+      vehicle.rearWheelGrounded = rwy >= groundRear - wheelRadius;
+      vehicle.frontWheelGrounded = fwy >= groundFront - wheelRadius;
+
+      // Engine Acceleration
+      if (hcKeys.gas && hcFuel > 0) {
+        if (vehicle.rearWheelGrounded || vehicle.frontWheelGrounded) {
+          vehicle.vx += cosA * power;
+          vehicle.vy += sinA * power;
+          vehicle.wheelRot += 0.35;
+          // Engine rumble sound
+          if (Math.random() < 0.15) playTone(75 + Math.random() * 35, 'triangle', 0.05, 0, 0.04);
+        }
+        // Torque rotation when in air / gas wheelie
+        if (isMojo) {
+          vehicle.angularVel -= 0.0035; // Mojo wheelies up easily
+        } else {
+          vehicle.angularVel -= 0.002;
+        }
+      }
+
+      // Brake / Reverse & Tilt Back
+      if (hcKeys.brake) {
+        if (vehicle.rearWheelGrounded || vehicle.frontWheelGrounded) {
+          vehicle.vx -= cosA * (power * 0.7);
+          vehicle.vy -= sinA * (power * 0.7);
+        }
+        vehicle.angularVel += 0.003;
+      }
+
+      // Gravity
+      vehicle.vy += 0.28;
+
+      // Air Drag / Friction
+      vehicle.vx *= 0.985;
+      vehicle.vy *= 0.985;
+      vehicle.angularVel *= 0.94;
+
+      // Limit speed
+      const currentSpeed = Math.hypot(vehicle.vx, vehicle.vy);
+      if (currentSpeed > topSpeed) {
+        vehicle.vx = (vehicle.vx / currentSpeed) * topSpeed;
+        vehicle.vy = (vehicle.vy / currentSpeed) * topSpeed;
+      }
+
+      // Move vehicle
+      vehicle.x += vehicle.vx;
+      vehicle.y += vehicle.vy;
+      vehicle.angle += vehicle.angularVel;
+
+      // Ground Suspension & Collisions
+      [ { wx: rwx, wy: rwy, ground: groundRear, isRear: true },
+        { wx: fwx, wy: fwy, ground: groundFront, isRear: false }
+      ].forEach(wheel => {
+        if (wheel.wy > wheel.ground - wheelRadius) {
+          const penetration = wheel.wy - (wheel.ground - wheelRadius);
+          vehicle.y -= penetration * 0.65;
+          vehicle.vy *= -0.2;
+
+          // Align vehicle angle to ground slope
+          const slope = getTerrainSlope(wheel.wx);
+          const angleDiff = slope - vehicle.angle;
+          vehicle.angularVel += angleDiff * (isMojo ? 0.04 : 0.06);
+
+          // Ground friction along slope
+          vehicle.vx += Math.cos(slope) * 0.05;
+        }
+      });
+
+      // Head Crash Detection (Upside down crash)
+      const headX = vehicle.x - Math.sin(vehicle.angle) * 22;
+      const headY = vehicle.y - Math.cos(vehicle.angle) * 22;
+      const headGround = getTerrainHeight(headX);
+
+      if (headY > headGround - 4) {
+        hcState = 'CRASHED';
+        playTone(110, 'sawtooth', 0.5);
+      }
+
+      // Pickups collision
+      hcPickups.forEach(p => {
+        if (!p.collected && Math.abs(vehicle.x - p.x) < 30) {
+          const py = getTerrainHeight(p.x) - 24;
+          if (Math.abs(vehicle.y - py) < 45) {
+            p.collected = true;
+            if (p.type === 'coin') {
+              hcCoins += 25;
+              playTone(880, 'square', 0.1); playTone(1320, 'square', 0.15, 0.05);
+            } else if (p.type === 'fuel') {
+              hcFuel = Math.min(100, hcFuel + 45);
+              playTone(440, 'triangle', 0.1); playTone(660, 'triangle', 0.2, 0.08);
+            }
+          }
+        }
+      });
+
+      updateHillClimbHUD();
+    }
+
+    function renderHillClimb() {
+      hcCtx.clearRect(0, 0, hcCanvas.width, hcCanvas.height);
+
+      const viewOffsetX = vehicle.x - 220;
+
+      hcCtx.save();
+
+      // Sky gradient background
+      const skyGrad = hcCtx.createLinearGradient(0, 0, 0, hcCanvas.height);
+      skyGrad.addColorStop(0, '#38bdf8');
+      skyGrad.addColorStop(0.65, '#bae6fd');
+      skyGrad.addColorStop(1, '#f0fdf4');
+      hcCtx.fillStyle = skyGrad;
+      hcCtx.fillRect(0, 0, hcCanvas.width, hcCanvas.height);
+
+      // Distant Parallax Mountain Range
+      hcCtx.fillStyle = '#64748b80';
+      hcCtx.beginPath();
+      hcCtx.moveTo(0, hcCanvas.height);
+      for (let px = 0; px <= hcCanvas.width; px += 50) {
+        const mx = px + viewOffsetX * 0.25;
+        const my = 200 + Math.sin(mx * 0.003) * 60 + Math.cos(mx * 0.007) * 30;
+        hcCtx.lineTo(px, my);
+      }
+      hcCtx.lineTo(hcCanvas.width, hcCanvas.height);
+      hcCtx.fill();
+
+      // Draw Terrain Surface
+      hcCtx.fillStyle = '#4ade80'; // Lush top grass
+      hcCtx.beginPath();
+      hcCtx.moveTo(0, hcCanvas.height);
+      for (let screenX = -20; screenX <= hcCanvas.width + 20; screenX += 8) {
+        const worldX = screenX + viewOffsetX;
+        const groundY = getTerrainHeight(worldX);
+        hcCtx.lineTo(screenX, groundY);
+      }
+      hcCtx.lineTo(hcCanvas.width, hcCanvas.height);
+      hcCtx.closePath();
+      hcCtx.fill();
+
+      // Deep Dirt Layer
+      hcCtx.fillStyle = '#78350f'; // Dark earth dirt
+      hcCtx.beginPath();
+      hcCtx.moveTo(0, hcCanvas.height);
+      for (let screenX = -20; screenX <= hcCanvas.width + 20; screenX += 8) {
+        const worldX = screenX + viewOffsetX;
+        const groundY = getTerrainHeight(worldX) + 12;
+        hcCtx.lineTo(screenX, groundY);
+      }
+      hcCtx.lineTo(hcCanvas.width, hcCanvas.height);
+      hcCtx.closePath();
+      hcCtx.fill();
+
+      // Draw Pickups (Fuel & Coins)
+      hcPickups.forEach(p => {
+        if (p.collected) return;
+        const sx = p.x - viewOffsetX;
+        if (sx > -30 && sx < hcCanvas.width + 30) {
+          const sy = getTerrainHeight(p.x) - 18;
+          if (p.type === 'coin') {
+            hcCtx.fillStyle = '#f59e0b';
+            hcCtx.beginPath();
+            hcCtx.arc(sx, sy, 9, 0, Math.PI * 2);
+            hcCtx.fill();
+            hcCtx.strokeStyle = '#d97706';
+            hcCtx.lineWidth = 2;
+            hcCtx.stroke();
+            hcCtx.fillStyle = '#fff';
+            hcCtx.font = 'bold 10px monospace';
+            hcCtx.fillText('$', sx - 3, sy + 3);
+          } else {
+            // Jerry Fuel Canister
+            hcCtx.fillStyle = '#dc2626';
+            hcCtx.fillRect(sx - 8, sy - 12, 16, 20);
+            hcCtx.fillStyle = '#991b1b';
+            hcCtx.fillRect(sx - 4, sy - 16, 8, 4); // cap
+            hcCtx.fillStyle = '#fff';
+            hcCtx.font = 'bold 8px monospace';
+            hcCtx.fillText('GAS', sx - 7, sy + 2);
+          }
+        }
+      });
+
+      // Draw Chosen Vehicle
+      hcCtx.translate(vehicle.x - viewOffsetX, vehicle.y);
+      hcCtx.rotate(vehicle.angle);
+
+      if (currentVehicle === 'mojo') {
+        drawMahindraMojoXT300();
+      } else {
+        drawMitsubishiPajero();
+      }
+
+      hcCtx.restore();
+
+      // Overlay if crashed or out of fuel
+      if (hcState === 'CRASHED') {
+        hcCtx.fillStyle = 'rgba(0,0,0,0.75)';
+        hcCtx.fillRect(0, 0, hcCanvas.width, hcCanvas.height);
+        hcCtx.fillStyle = '#ef4444';
+        hcCtx.font = 'bold 30px monospace';
+        hcCtx.textAlign = 'center';
+        hcCtx.fillText('DRIVER CRASHED!', 400, 190);
+        hcCtx.fillStyle = '#fff';
+        hcCtx.font = '14px monospace';
+        hcCtx.fillText('Press "Restart" or [R] to try again.', 400, 225);
+      } else if (hcState === 'OUTOFFUEL') {
+        hcCtx.fillStyle = 'rgba(0,0,0,0.75)';
+        hcCtx.fillRect(0, 0, hcCanvas.width, hcCanvas.height);
+        hcCtx.fillStyle = '#f59e0b';
+        hcCtx.font = 'bold 30px monospace';
+        hcCtx.textAlign = 'center';
+        hcCtx.fillText('OUT OF FUEL!', 400, 190);
+        hcCtx.fillStyle = '#fff';
+        hcCtx.font = '14px monospace';
+        hcCtx.fillText('Pick up red fuel canisters on the hills to keep riding!', 400, 225);
+      }
+    }
+
+    // --- Vector Drawing: Mahindra Mojo XT300 ---
+    function drawMahindraMojoXT300() {
+      // Rear & Front Wheels
+      drawMotorcycleWheel(-18, 10, vehicle.wheelRot);
+      drawMotorcycleWheel(18, 10, vehicle.wheelRot);
+
+      // Golden Upside-Down (USD) Front Forks
+      hcCtx.strokeStyle = '#eab308'; // Gold
+      hcCtx.lineWidth = 3.5;
+      hcCtx.beginPath();
+      hcCtx.moveTo(4, -8);
+      hcCtx.lineTo(18, 10);
+      hcCtx.stroke();
+
+      // Rear Monoshock & Swingarm
+      hcCtx.strokeStyle = '#94a3b8';
+      hcCtx.lineWidth = 3;
+      hcCtx.beginPath();
+      hcCtx.moveTo(-3, 0);
+      hcCtx.lineTo(-18, 10);
+      hcCtx.stroke();
+
+      // Dual Exhaust Canister (Mojo signature dual silencer)
+      hcCtx.fillStyle = '#475569';
+      hcCtx.fillRect(-15, 6, 16, 5);
+      hcCtx.fillStyle = '#cbd5e1';
+      hcCtx.fillRect(1, 7, 4, 3); // chrome tip
+
+      // Exposed Twin-Tube Frame (Gold Ribs)
+      hcCtx.strokeStyle = '#f59e0b';
+      hcCtx.lineWidth = 2.5;
+      hcCtx.beginPath();
+      hcCtx.moveTo(-10, -5);
+      hcCtx.lineTo(6, -8);
+      hcCtx.stroke();
+
+      // Engine Block 295cc EFI
+      hcCtx.fillStyle = '#1e293b';
+      hcCtx.fillRect(-7, 0, 14, 10);
+
+      // Muscular Sculpted Fuel Tank (Ocean Blue / Agate Red)
+      hcCtx.fillStyle = '#0284c7'; // Mojo Ocean Blue
+      hcCtx.beginPath();
+      hcCtx.moveTo(-12, -8);
+      hcCtx.lineTo(4, -13);
+      hcCtx.lineTo(8, -8);
+      hcCtx.lineTo(1, -2);
+      hcCtx.closePath();
+      hcCtx.fill();
+
+      // Twin Pod Headlamp Cowl (Twin-eye visor)
+      hcCtx.fillStyle = '#0f172a';
+      hcCtx.fillRect(7, -13, 8, 8);
+      hcCtx.fillStyle = '#fef08a'; // Headlamp glow
+      hcCtx.fillRect(14, -12, 3, 5);
+
+      // Single-piece touring seat
+      hcCtx.fillStyle = '#09090b';
+      hcCtx.beginPath();
+      hcCtx.moveTo(-18, -8);
+      hcCtx.lineTo(-7, -8);
+      hcCtx.lineTo(-2, -4);
+      hcCtx.lineTo(-18, -4);
+      hcCtx.closePath();
+      hcCtx.fill();
+
+      // Biker silhouette
+      hcCtx.fillStyle = '#1e293b';
+      hcCtx.beginPath();
+      hcCtx.arc(-4, -20, 6, 0, Math.PI * 2); // helmet
+      hcCtx.fill();
+      hcCtx.fillStyle = '#f59e0b'; // helmet visor
+      hcCtx.fillRect(-1, -21, 4, 3);
+      // Rider torso & arms to handlebars
+      hcCtx.strokeStyle = '#1e293b';
+      hcCtx.lineWidth = 4;
+      hcCtx.beginPath();
+      hcCtx.moveTo(-6, -15);
+      hcCtx.lineTo(-2, -7);
+      hcCtx.lineTo(5, -10);
+      hcCtx.stroke();
+    }
+
+    function drawMotorcycleWheel(cx, cy, rot) {
+      hcCtx.save();
+      hcCtx.translate(cx, cy);
+      hcCtx.rotate(rot);
+
+      // Rubber Tire
+      hcCtx.fillStyle = '#18181b';
+      hcCtx.beginPath();
+      hcCtx.arc(0, 0, 11, 0, Math.PI * 2);
+      hcCtx.fill();
+
+      // Black Alloy Rim
+      hcCtx.fillStyle = '#3f3f46';
+      hcCtx.beginPath();
+      hcCtx.arc(0, 0, 7, 0, Math.PI * 2);
+      hcCtx.fill();
+
+      // Spokes
+      hcCtx.strokeStyle = '#eab308'; // Golden wheel rim accent
+      hcCtx.lineWidth = 1.5;
+      for (let a = 0; a < Math.PI * 2; a += Math.PI / 3) {
+        hcCtx.beginPath();
+        hcCtx.moveTo(0, 0);
+        hcCtx.lineTo(Math.cos(a) * 7, Math.sin(a) * 7);
+        hcCtx.stroke();
+      }
+      hcCtx.restore();
+    }
+
+    // --- Vector Drawing: Mitsubishi Pajero 4x4 ---
+    function drawMitsubishiPajero() {
+      // Rugged High-Travel Off-road Wheels
+      drawCarWheel(-23, 10, vehicle.wheelRot);
+      drawCarWheel(23, 10, vehicle.wheelRot);
+
+      // Tailgate Mounted Spare Wheel (Pajero signature rear)
+      hcCtx.fillStyle = '#18181b';
+      hcCtx.fillRect(-35, -12, 7, 18);
+      hcCtx.fillStyle = '#e2e8f0';
+      hcCtx.fillRect(-33, -9, 3, 12);
+
+      // Main Boxy Body Shell (Two-Tone Heritage: White/Silver over Grey cladding)
+      hcCtx.fillStyle = '#f8fafc'; // Alpine White top body
+      hcCtx.beginPath();
+      hcCtx.moveTo(-30, -5);
+      hcCtx.lineTo(-30, -22);
+      hcCtx.lineTo(-8, -23); // roofline
+      hcCtx.lineTo(12, -23);
+      hcCtx.lineTo(22, -10); // rake windscreen
+      hcCtx.lineTo(34, -8);  // bonnet nose
+      hcCtx.lineTo(34, 0);
+      hcCtx.lineTo(-30, 0);
+      hcCtx.closePath();
+      hcCtx.fill();
+
+      // Lower Rugged Fender Cladding (Grey 2-tone)
+      hcCtx.fillStyle = '#64748b';
+      hcCtx.fillRect(-30, -2, 64, 8);
+
+      // Flared Wheel Arches
+      hcCtx.fillStyle = '#475569';
+      hcCtx.beginPath();
+      hcCtx.arc(-23, 6, 13, Math.PI, 0);
+      hcCtx.fill();
+      hcCtx.beginPath();
+      hcCtx.arc(23, 6, 13, Math.PI, 0);
+      hcCtx.fill();
+
+      // Tinted Windows & Pillars
+      hcCtx.fillStyle = '#0284c7';
+      // Side windows
+      hcCtx.fillRect(-26, -20, 14, 10);
+      hcCtx.fillRect(-9, -20, 16, 10);
+      hcCtx.beginPath();
+      hcCtx.moveTo(10, -20);
+      hcCtx.lineTo(19, -10);
+      hcCtx.lineTo(10, -10);
+      hcCtx.closePath();
+      hcCtx.fill();
+
+      // Headlamps & Grille (Classic 3-Diamond Pajero face)
+      hcCtx.fillStyle = '#fef08a';
+      hcCtx.fillRect(32, -6, 3, 6);
+      hcCtx.fillStyle = '#0f172a';
+      hcCtx.fillRect(32, 0, 3, 4); // front bull bumper
+
+      // Roof Rails
+      hcCtx.strokeStyle = '#334155';
+      hcCtx.lineWidth = 2;
+      hcCtx.beginPath();
+      hcCtx.moveTo(-24, -25);
+      hcCtx.lineTo(10, -25);
+      hcCtx.stroke();
+    }
+
+    function drawCarWheel(cx, cy, rot) {
+      hcCtx.save();
+      hcCtx.translate(cx, cy);
+      hcCtx.rotate(rot);
+
+      // Deep Tread SUV Tire
+      hcCtx.fillStyle = '#0f172a';
+      hcCtx.beginPath();
+      hcCtx.arc(0, 0, 13, 0, Math.PI * 2);
+      hcCtx.fill();
+
+      // 6-Spoke Off-Road Rim
+      hcCtx.fillStyle = '#cbd5e1';
+      hcCtx.beginPath();
+      hcCtx.arc(0, 0, 8, 0, Math.PI * 2);
+      hcCtx.fill();
+
+      hcCtx.strokeStyle = '#334155';
+      hcCtx.lineWidth = 2;
+      for (let a = 0; a < Math.PI * 2; a += Math.PI / 3) {
+        hcCtx.beginPath();
+        hcCtx.moveTo(0, 0);
+        hcCtx.lineTo(Math.cos(a) * 8, Math.sin(a) * 8);
+        hcCtx.stroke();
+      }
+      hcCtx.restore();
+    }
+
+    // ==========================================
+    // 4. KEYBOARD & TOUCH CONTROLS
+    // ==========================================
     window.addEventListener('keydown', e => {
       initAudio();
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = true;
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = true;
-      if (e.code === 'ArrowUp' || e.code === 'KeyW' || e.code === 'Space') {
-        keys.jump = true;
-        e.preventDefault();
-      }
-      if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') keys.run = true;
+      // Mario Controls
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') { marioKeys.right = true; hcKeys.gas = true; }
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') { marioKeys.left = true; hcKeys.brake = true; }
+      if (e.code === 'ArrowUp' || e.code === 'KeyW' || e.code === 'Space') { marioKeys.jump = true; e.preventDefault(); }
+      if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') marioKeys.run = true;
+      if (e.code === 'KeyR') { resetHillClimb(); resetMarioGame(false); }
     });
 
     window.addEventListener('keyup', e => {
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = false;
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = false;
-      if (e.code === 'ArrowUp' || e.code === 'KeyW' || e.code === 'Space') keys.jump = false;
-      if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') keys.run = false;
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') { marioKeys.right = false; hcKeys.gas = false; }
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') { marioKeys.left = false; hcKeys.brake = false; }
+      if (e.code === 'ArrowUp' || e.code === 'KeyW' || e.code === 'Space') marioKeys.jump = false;
+      if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') marioKeys.run = false;
     });
 
-    // Mobile Virtual Buttons
-    const bindTouch = (btnId, keyName) => {
-      const el = document.getElementById(btnId);
+    // Mobile Virtual Touch Buttons
+    const bindBtn = (id, onStart, onEnd) => {
+      const el = document.getElementById(id);
       if (!el) return;
-      el.addEventListener('touchstart', e => { e.preventDefault(); initAudio(); keys[keyName] = true; });
-      el.addEventListener('touchend', e => { e.preventDefault(); keys[keyName] = false; });
-      el.addEventListener('mousedown', e => { e.preventDefault(); initAudio(); keys[keyName] = true; });
-      el.addEventListener('mouseup', e => { e.preventDefault(); keys[keyName] = false; });
+      ['touchstart', 'mousedown'].forEach(ev => el.addEventListener(ev, e => { e.preventDefault(); initAudio(); onStart(); }));
+      ['touchend', 'mouseup'].forEach(ev => el.addEventListener(ev, e => { e.preventDefault(); onEnd(); }));
     };
-    bindTouch('btn-left', 'left');
-    bindTouch('btn-right', 'right');
-    bindTouch('btn-jump', 'jump');
-    bindTouch('btn-run', 'run');
 
-    // --- Main Update Loop ---
-    function update() {
-      if (gameState === 'PLAYING') {
-        // Player Movement
-        const speed = keys.run ? 4.5 : 3.0;
-        if (keys.right) {
-          mario.vx = speed;
-          mario.facingRight = true;
-          mario.walkFrame += 0.2;
-        } else if (keys.left) {
-          mario.vx = -speed;
-          mario.facingRight = false;
-          mario.walkFrame += 0.2;
-        } else {
-          mario.vx *= 0.8;
-          if (Math.abs(mario.vx) < 0.1) mario.vx = 0;
-        }
+    // Mario Buttons
+    bindBtn('mario-btn-left', () => marioKeys.left = true, () => marioKeys.left = false);
+    bindBtn('mario-btn-right', () => marioKeys.right = true, () => marioKeys.right = false);
+    bindBtn('mario-btn-jump', () => marioKeys.jump = true, () => marioKeys.jump = false);
+    bindBtn('mario-btn-run', () => marioKeys.run = true, () => marioKeys.run = false);
 
-        // Jump physics
-        if (keys.jump && mario.grounded) {
-          mario.vy = -12.5;
-          mario.grounded = false;
-          sfx.jump();
-        }
+    // Hill Climb Buttons
+    bindBtn('hc-btn-gas', () => hcKeys.gas = true, () => hcKeys.gas = false);
+    bindBtn('hc-btn-brake', () => hcKeys.brake = true, () => hcKeys.brake = false);
 
-        // Gravity
-        mario.vy += 0.65;
-        if (mario.vy > 12) mario.vy = 12;
-
-        // Apply velocities with Horizontal Collision
-        mario.x += mario.vx;
-        if (mario.x < cameraX) mario.x = cameraX;
-
-        blocks.forEach(b => {
-          if (boxOverlap(mario, b)) {
-            if (mario.vx > 0) mario.x = b.x - mario.w;
-            else if (mario.vx < 0) mario.x = b.x + b.w;
-          }
-        });
-
-        // Vertical Movement & Collision
-        mario.y += mario.vy;
-        mario.grounded = false;
-
-        blocks.forEach(b => {
-          if (boxOverlap(mario, b)) {
-            // Landing on block top
-            if (mario.vy > 0 && (mario.y + mario.h - mario.vy) <= b.y + 4) {
-              mario.y = b.y - mario.h;
-              mario.vy = 0;
-              mario.grounded = true;
-            }
-            // Hitting block from bottom
-            else if (mario.vy < 0 && (mario.y - mario.vy) >= b.y + b.h - 8) {
-              mario.y = b.y + b.h;
-              mario.vy = 0;
-              handleBlockHit(b);
-            }
-          }
-        });
-
-        // Fall into pit
-        if (mario.y > 420) {
-          killMario();
-        }
-
-        // Check Flagpole
-        if (mario.x >= flagpole.x - 12 && mario.x <= flagpole.x + flagpole.w + 12) {
-          gameState = 'WON';
-          score += 5000;
-          updateHUD();
-          sfx.win();
-        }
-
-        // Camera Follow
-        if (mario.x - cameraX > 380) {
-          cameraX = mario.x - 380;
-        }
-        if (cameraX > LEVEL_WIDTH - canvas.width) {
-          cameraX = LEVEL_WIDTH - canvas.width;
-        }
-
-        // Enemies update
-        enemies.forEach(e => {
-          if (e.squished) {
-            e.squishTimer++;
-            return;
-          }
-
-          // Active only near viewport
-          if (e.x > cameraX - 100 && e.x < cameraX + canvas.width + 100) {
-            e.x += e.vx;
-
-            // Turn on block sides
-            blocks.forEach(b => {
-              if (boxOverlap(e, b)) {
-                if (e.vx > 0) { e.x = b.x - e.w; e.vx = -e.vx; }
-                else if (e.vx < 0) { e.x = b.x + b.w; e.vx = -e.vx; }
-              }
-            });
-
-            // Mario vs Enemy Collision
-            if (boxOverlap(mario, e)) {
-              if (mario.vy > 0 && (mario.y + mario.h - mario.vy) <= e.y + 12) {
-                // Stomp enemy
-                e.squished = true;
-                mario.vy = -8.5;
-                score += 200;
-                updateHUD();
-                sfx.stomp();
-              } else {
-                killMario();
-              }
-            }
-          }
-        });
-
-        // Filter squished enemies
-        enemies = enemies.filter(e => !e.squished || e.squishTimer < 30);
-
-        // Update block bounces
-        blocks.forEach(b => {
-          if (b.bounceY < 0) {
-            b.bounceY += 1.5;
-            if (b.bounceY > 0) b.bounceY = 0;
-          }
-        });
-      } else if (gameState === 'WON') {
-        if (flagpole.flagY < GROUND_Y - 40) {
-          flagpole.flagY += 3;
-        }
-        if (mario.x < flagpole.x + 120) {
-          mario.x += 1.5;
-          mario.walkFrame += 0.2;
-        }
+    // ==========================================
+    // 5. MASTER ANIMATION LOOP
+    // ==========================================
+    function mainLoop() {
+      // Run updates according to active view to save performance
+      if (!document.getElementById('mario-view').classList.contains('hidden')) {
+        updateMario();
+        renderMario();
+      } else if (!document.getElementById('hillclimb-view').classList.contains('hidden')) {
+        updateHillClimb();
+        renderHillClimb();
       }
-
-      // Update Particles (coin popups)
-      particles.forEach(p => {
-        p.y += p.vy;
-        p.vy += 0.4;
-        p.life--;
-      });
-      particles = particles.filter(p => p.life > 0);
+      requestAnimationFrame(mainLoop);
     }
 
-    function handleBlockHit(b) {
-      if (b.type === 'q' && !b.hit) {
-        b.hit = true;
-        b.bounceY = -8;
-        coinsCount++;
-        score += 100;
-        updateHUD();
-        sfx.coin();
-        particles.push({ x: b.x + 8, y: b.y - 12, vy: -5, life: 25, type: 'coin' });
-      } else if (b.type === 'brick') {
-        b.bounceY = -5;
-        sfx.bump();
-      }
-    }
-
-    function killMario() {
-      sfx.die();
-      lives--;
-      updateHUD();
-      if (lives <= 0) {
-        gameState = 'GAMEOVER';
-      } else {
-        resetGame(false);
-      }
-    }
-
-    function boxOverlap(r1, r2) {
-      return (
-        r1.x < r2.x + r2.w &&
-        r1.x + r1.w > r2.x &&
-        r1.y < r2.y + r2.h &&
-        r1.y + r1.h > r2.y
-      );
-    }
-
-    // --- Rendering Pipeline ---
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      ctx.save();
-      ctx.translate(-cameraX, 0);
-
-      // Scenery: Clouds & Bush Hills
-      drawScenery();
-
-      // Blocks & Pipes
-      blocks.forEach(b => {
-        const renderY = b.y + (b.bounceY || 0);
-
-        if (b.type === 'ground') {
-          ctx.fillStyle = '#C84C0C';
-          ctx.fillRect(b.x, renderY, b.w, b.h);
-          ctx.fillStyle = '#00A800';
-          ctx.fillRect(b.x, renderY, b.w, 6);
-          // Ground pattern dots
-          ctx.fillStyle = '#00000030';
-          for (let gx = b.x; gx < b.x + b.w; gx += 20) {
-            ctx.fillRect(gx + 4, renderY + 14, 6, 6);
-          }
-        } else if (b.type === 'pipe') {
-          ctx.fillStyle = '#00A800';
-          ctx.fillRect(b.x, renderY, b.w, b.h);
-          ctx.strokeStyle = '#000000';
-          ctx.lineWidth = 2;
-          ctx.strokeRect(b.x, renderY, b.w, b.h);
-          // Pipe rim
-          ctx.fillStyle = '#00D800';
-          ctx.fillRect(b.x - 3, renderY, b.w + 6, 14);
-          ctx.strokeRect(b.x - 3, renderY, b.w + 6, 14);
-        } else if (b.type === 'brick') {
-          ctx.fillStyle = '#B84418';
-          ctx.fillRect(b.x, renderY, b.w, b.h);
-          ctx.strokeStyle = '#000000';
-          ctx.lineWidth = 1.5;
-          ctx.strokeRect(b.x, renderY, b.w, b.h);
-          // Brick lines
-          ctx.fillStyle = '#E45C10';
-          ctx.fillRect(b.x + 2, renderY + 2, b.w - 4, 10);
-        } else if (b.type === 'q') {
-          ctx.fillStyle = b.hit ? '#9C7A54' : '#FC9838';
-          ctx.fillRect(b.x, renderY, b.w, b.h);
-          ctx.strokeStyle = '#000';
-          ctx.lineWidth = 1.5;
-          ctx.strokeRect(b.x, renderY, b.w, b.h);
-          if (!b.hit) {
-            ctx.fillStyle = '#000';
-            ctx.font = 'bold 18px monospace';
-            ctx.fillText('?', b.x + 9, renderY + 22);
-          }
-        }
-      });
-
-      // Flagpole and Castle
-      ctx.fillStyle = '#808080';
-      ctx.fillRect(flagpole.x, flagpole.y, flagpole.w, flagpole.h);
-      ctx.fillStyle = '#00A800';
-      ctx.fillRect(flagpole.x - 20, flagpole.flagY, 20, 16); // Green flag
-      // Castle
-      ctx.fillStyle = '#D07030';
-      ctx.fillRect(3150, GROUND_Y - 90, 110, 90);
-      ctx.fillStyle = '#000';
-      ctx.fillRect(3190, GROUND_Y - 45, 30, 45); // Castle door
-
-      // Particles / Popping Coins
-      particles.forEach(p => {
-        ctx.fillStyle = '#FFD700';
-        ctx.beginPath();
-        ctx.arc(p.x + 6, p.y, 8, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.strokeStyle = '#B8860B';
-        ctx.stroke();
-      });
-
-      // Goomba Enemies
-      enemies.forEach(e => {
-        if (e.squished) {
-          ctx.fillStyle = '#9C4A00';
-          ctx.fillRect(e.x, e.y + 16, e.w, 10);
-        } else {
-          // Head / Body
-          ctx.fillStyle = '#B85418';
-          ctx.fillRect(e.x + 2, e.y, e.w - 4, e.h - 6);
-          // Eyes
-          ctx.fillStyle = '#fff';
-          ctx.fillRect(e.x + 4, e.y + 6, 4, 8);
-          ctx.fillRect(e.x + 16, e.y + 6, 4, 8);
-          ctx.fillStyle = '#000';
-          ctx.fillRect(e.x + 5, e.y + 8, 2, 4);
-          ctx.fillRect(e.x + 17, e.y + 8, 2, 4);
-          // Feet
-          ctx.fillStyle = '#000';
-          ctx.fillRect(e.x, e.y + e.h - 6, 8, 6);
-          ctx.fillRect(e.x + e.w - 8, e.y + e.h - 6, 8, 6);
-        }
-      });
-
-      // Draw Mario Sprite
-      drawMario(mario.x, mario.y, mario.facingRight);
-
-      ctx.restore();
-
-      // Win / GameOver Overlays
-      if (gameState === 'WON') {
-        ctx.fillStyle = 'rgba(0,0,0,0.7)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#FFD700';
-        ctx.font = 'bold 32px monospace';
-        ctx.textAlign = 'center';
-        ctx.fillText('STAGE CLEAR! YOU WIN!', canvas.width / 2, canvas.height / 2 - 10);
-        ctx.fillStyle = '#fff';
-        ctx.font = '16px monospace';
-        ctx.fillText('Click "Restart" above to run it again.', canvas.width / 2, canvas.height / 2 + 25);
-      } else if (gameState === 'GAMEOVER') {
-        ctx.fillStyle = 'rgba(0,0,0,0.8)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#FF3333';
-        ctx.font = 'bold 36px monospace';
-        ctx.textAlign = 'center';
-        ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2 - 10);
-        ctx.fillStyle = '#fff';
-        ctx.font = '16px monospace';
-        ctx.fillText('Press "Restart" to try again with 3 lives.', canvas.width / 2, canvas.height / 2 + 25);
-      }
-    }
-
-    function drawScenery() {
-      // Clouds
-      ctx.fillStyle = '#fff';
-      const clouds = [150, 450, 850, 1250, 1650, 2050, 2450, 2850];
-      clouds.forEach(cx => {
-        ctx.beginPath();
-        ctx.arc(cx, 60, 20, 0, Math.PI * 2);
-        ctx.arc(cx + 20, 50, 24, 0, Math.PI * 2);
-        ctx.arc(cx + 40, 60, 20, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      // Hills
-      ctx.fillStyle = '#00A800';
-      const hills = [100, 680, 1500, 2200];
-      hills.forEach(hx => {
-        ctx.beginPath();
-        ctx.arc(hx + 50, GROUND_Y, 50, Math.PI, 0);
-        ctx.fill();
-      });
-    }
-
-    function drawMario(x, y, facingRight) {
-      ctx.save();
-      if (!facingRight) {
-        ctx.translate(x + mario.w, y);
-        ctx.scale(-1, 1);
-        x = 0;
-        y = 0;
-      }
-
-      // Cap
-      ctx.fillStyle = '#E52521';
-      ctx.fillRect(x + 4, y, 16, 6);
-      ctx.fillRect(x + 8, y - 2, 14, 4);
-
-      // Face
-      ctx.fillStyle = '#FCCC98';
-      ctx.fillRect(x + 4, y + 6, 16, 10);
-
-      // Mustache & Hair
-      ctx.fillStyle = '#6A3805';
-      ctx.fillRect(x + 2, y + 6, 4, 6); // hair
-      ctx.fillRect(x + 12, y + 10, 8, 4); // mustache
-
-      // Overalls / Shirt
-      ctx.fillStyle = '#E52521'; // red shirt
-      ctx.fillRect(x + 4, y + 16, 16, 8);
-      ctx.fillStyle = '#0026C8'; // blue overalls
-      ctx.fillRect(x + 6, y + 18, 12, 10);
-
-      // Legs / Shoes
-      ctx.fillStyle = '#6A3805';
-      if (!mario.grounded) {
-        ctx.fillRect(x + 2, y + 28, 8, 6);
-        ctx.fillRect(x + 14, y + 26, 8, 6);
-      } else {
-        const frame = Math.floor(mario.walkFrame) % 2;
-        if (frame === 0 || mario.vx === 0) {
-          ctx.fillRect(x + 2, y + 28, 8, 4);
-          ctx.fillRect(x + 14, y + 28, 8, 4);
-        } else {
-          ctx.fillRect(x, y + 28, 10, 4);
-          ctx.fillRect(x + 12, y + 28, 10, 4);
-        }
-      }
-
-      ctx.restore();
-    }
-
-    // --- Game Loop Initialization ---
-    function loop() {
-      update();
-      draw();
-      requestAnimationFrame(loop);
-    }
-
-    // Initialize level and loop
-    resetGame(true);
-    loop();
+    // Initialize both games and start the loop
+    resetMarioGame(true);
+    resetHillClimb();
+    mainLoop();
   </script>
 </body>
 </html>
