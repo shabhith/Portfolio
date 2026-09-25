@@ -83,7 +83,7 @@
             <i class="fas fa-gamepad"></i> Super Mario
           </button>
           <button onclick="switchView('hillclimb')" class="px-5 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-emerald-500/20">
-            <i class="fas fa-mountain"></i> Hill Climb (Mojo &amp; Pajero)
+            <i class="fas fa-mountain"></i> Hill Climb (Mojo XT300 &amp; Pajero)
           </button>
         </div>
       </div>
@@ -99,7 +99,7 @@
             I am a software developer with a practical mindset focused on building dynamic user experiences, scalable APIs, and structured data utilities. I love turning product requirements into clean, maintainable code.
           </p>
           <p>
-            Along with development, I have a strong passion for automotive machines—from touring motorcycles to rugged 4x4s—and ethical hacking. When I want a coding break, I build fun canvas arcade engines right in the browser.
+            Along with development, I have a passion for automotive machines—from tourer motorcycles like the Mahindra Mojo XT300 to rugged off-roaders like the Pajero SFX—and web application penetration testing.
           </p>
         </div>
       </div>
@@ -269,7 +269,7 @@
   </section>
 
   <!-- ===================================================== -->
-  <!-- 3. HILL CLIMB RACING VIEW (MOJO XT300 & PAJERO)       -->
+  <!-- 3. HILL CLIMB RACING VIEW (MOJO XT300 & PAJERO SFX)  -->
   <!-- ===================================================== -->
   <section id="hillclimb-view" class="pt-20 pb-16 px-4 hidden">
     <div class="max-w-4xl mx-auto">
@@ -290,7 +290,7 @@
               <i class="fas fa-motorcycle"></i> Mojo XT300
             </button>
             <button id="choose-pajero" onclick="selectVehicle('pajero')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white flex items-center gap-1.5">
-              <i class="fas fa-truck-monster"></i> Pajero 4x4
+              <i class="fas fa-truck-monster"></i> Pajero SFX
             </button>
           </div>
 
@@ -392,7 +392,6 @@
       const marioBtn = document.getElementById('tab-mario-btn');
       const hillBtn = document.getElementById('tab-hillclimb-btn');
 
-      // reset button styles
       [portBtn, marioBtn, hillBtn].forEach(b => {
         b.className = "px-3 sm:px-4 py-1.5 rounded-full transition text-slate-400 hover:text-white flex items-center gap-1.5";
       });
@@ -487,7 +486,6 @@
       mario.vy += 0.65;
       if (mario.vy > 12) mario.vy = 12;
 
-      // X movement & collision
       mario.x += mario.vx;
       if (mario.x < marioCameraX) mario.x = marioCameraX;
       marioBlocks.forEach(b => {
@@ -497,7 +495,6 @@
         }
       });
 
-      // Y movement & collision
       mario.y += mario.vy;
       mario.grounded = false;
       marioBlocks.forEach(b => {
@@ -529,7 +526,6 @@
         if (marioLives <= 0) marioState = 'GAMEOVER'; else resetMarioGame(false);
       }
 
-      // Check Flagpole
       if (mario.x >= flagpole.x - 12 && mario.x <= flagpole.x + flagpole.w + 12) {
         marioState = 'WON';
         marioScore += 5000;
@@ -539,7 +535,6 @@
 
       if (mario.x - marioCameraX > 380) marioCameraX = mario.x - 380;
 
-      // Enemies
       marioEnemies.forEach(e => {
         if (e.squished) { e.squishTimer++; return; }
         if (e.x > marioCameraX - 100 && e.x < marioCameraX + 900) {
@@ -662,9 +657,9 @@
       }
     }
 
-    // ==========================================
-    // 3. HILL CLIMB RACING ENGINE (MOJO & PAJERO)
-    // ==========================================
+    // =========================================================================
+    // 3. HILL CLIMB RACING ENGINE (AUTHENTIC MOJO XT300 & PAJERO SFX CARTOON)
+    // =========================================================================
     const hcCanvas = document.getElementById('hillclimb-canvas');
     const hcCtx = hcCanvas.getContext('2d');
 
@@ -672,11 +667,10 @@
     let hcDistance = 0;
     let hcCoins = 0;
     let hcFuel = 100;
-    let hcState = 'PLAYING'; // 'PLAYING' | 'CRASHED' | 'OUTOFFUEL'
+    let hcState = 'PLAYING';
 
     const hcKeys = { gas: false, brake: false };
 
-    // Vehicle Physics State
     const vehicle = {
       x: 100,
       y: 200,
@@ -689,7 +683,6 @@
       frontWheelGrounded: false
     };
 
-    // Terrain generator using layered sine waves
     function getTerrainHeight(worldX) {
       if (worldX < 60) return 260;
       const h1 = Math.sin(worldX * 0.005) * 45;
@@ -706,7 +699,6 @@
       return Math.atan2(y2 - y1, step * 2);
     }
 
-    // Collectibles & fuel cans
     let hcPickups = [];
     function generatePickups() {
       hcPickups = [];
@@ -732,7 +724,7 @@
       } else {
         pajeroBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition bg-emerald-500 text-slate-950 flex items-center gap-1.5";
         mojoBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white flex items-center gap-1.5";
-        label.innerText = 'Pajero 4x4';
+        label.innerText = 'Pajero SFX';
       }
       resetHillClimb();
     }
@@ -764,12 +756,11 @@
       if (hcState !== 'PLAYING') return;
 
       const isMojo = currentVehicle === 'mojo';
-      const wheelBase = isMojo ? 34 : 46;
-      const wheelRadius = isMojo ? 11 : 14;
-      const power = isMojo ? 0.38 : 0.45;
-      const topSpeed = isMojo ? 11 : 9.5;
+      const wheelBase = isMojo ? 44 : 54;
+      const wheelRadius = isMojo ? 14 : 16;
+      const power = isMojo ? 0.42 : 0.46;
+      const topSpeed = isMojo ? 11.5 : 9.5;
 
-      // Fuel consumption
       if (hcKeys.gas) {
         hcFuel -= 0.08;
       } else {
@@ -781,15 +772,14 @@
         playTone(180, 'sawtooth', 0.4);
       }
 
-      // Wheel Positions in World Space
       const cosA = Math.cos(vehicle.angle);
       const sinA = Math.sin(vehicle.angle);
 
       const rwx = vehicle.x - (wheelBase / 2) * cosA;
-      const rwy = vehicle.y - (wheelBase / 2) * sinA + 8;
+      const rwy = vehicle.y - (wheelBase / 2) * sinA + 10;
 
       const fwx = vehicle.x + (wheelBase / 2) * cosA;
-      const fwy = vehicle.y + (wheelBase / 2) * sinA + 8;
+      const fwy = vehicle.y + (wheelBase / 2) * sinA + 10;
 
       const groundRear = getTerrainHeight(rwx);
       const groundFront = getTerrainHeight(fwx);
@@ -797,24 +787,20 @@
       vehicle.rearWheelGrounded = rwy >= groundRear - wheelRadius;
       vehicle.frontWheelGrounded = fwy >= groundFront - wheelRadius;
 
-      // Engine Acceleration
       if (hcKeys.gas && hcFuel > 0) {
         if (vehicle.rearWheelGrounded || vehicle.frontWheelGrounded) {
           vehicle.vx += cosA * power;
           vehicle.vy += sinA * power;
-          vehicle.wheelRot += 0.35;
-          // Engine rumble sound
+          vehicle.wheelRot += 0.4;
           if (Math.random() < 0.15) playTone(75 + Math.random() * 35, 'triangle', 0.05, 0, 0.04);
         }
-        // Torque rotation when in air / gas wheelie
         if (isMojo) {
-          vehicle.angularVel -= 0.0035; // Mojo wheelies up easily
+          vehicle.angularVel -= 0.0035;
         } else {
-          vehicle.angularVel -= 0.002;
+          vehicle.angularVel -= 0.0018;
         }
       }
 
-      // Brake / Reverse & Tilt Back
       if (hcKeys.brake) {
         if (vehicle.rearWheelGrounded || vehicle.frontWheelGrounded) {
           vehicle.vx -= cosA * (power * 0.7);
@@ -823,48 +809,39 @@
         vehicle.angularVel += 0.003;
       }
 
-      // Gravity
       vehicle.vy += 0.28;
-
-      // Air Drag / Friction
       vehicle.vx *= 0.985;
       vehicle.vy *= 0.985;
       vehicle.angularVel *= 0.94;
 
-      // Limit speed
       const currentSpeed = Math.hypot(vehicle.vx, vehicle.vy);
       if (currentSpeed > topSpeed) {
         vehicle.vx = (vehicle.vx / currentSpeed) * topSpeed;
         vehicle.vy = (vehicle.vy / currentSpeed) * topSpeed;
       }
 
-      // Move vehicle
       vehicle.x += vehicle.vx;
       vehicle.y += vehicle.vy;
       vehicle.angle += vehicle.angularVel;
 
-      // Ground Suspension & Collisions
-      [ { wx: rwx, wy: rwy, ground: groundRear, isRear: true },
-        { wx: fwx, wy: fwy, ground: groundFront, isRear: false }
+      [ { wx: rwx, wy: rwy, ground: groundRear },
+        { wx: fwx, wy: fwy, ground: groundFront }
       ].forEach(wheel => {
         if (wheel.wy > wheel.ground - wheelRadius) {
           const penetration = wheel.wy - (wheel.ground - wheelRadius);
           vehicle.y -= penetration * 0.65;
           vehicle.vy *= -0.2;
 
-          // Align vehicle angle to ground slope
           const slope = getTerrainSlope(wheel.wx);
           const angleDiff = slope - vehicle.angle;
           vehicle.angularVel += angleDiff * (isMojo ? 0.04 : 0.06);
-
-          // Ground friction along slope
           vehicle.vx += Math.cos(slope) * 0.05;
         }
       });
 
-      // Head Crash Detection (Upside down crash)
-      const headX = vehicle.x - Math.sin(vehicle.angle) * 22;
-      const headY = vehicle.y - Math.cos(vehicle.angle) * 22;
+      // Head Crash Detection
+      const headX = vehicle.x - Math.sin(vehicle.angle) * 26;
+      const headY = vehicle.y - Math.cos(vehicle.angle) * 26;
       const headGround = getTerrainHeight(headX);
 
       if (headY > headGround - 4) {
@@ -899,7 +876,7 @@
 
       hcCtx.save();
 
-      // Sky gradient background
+      // Sky Gradient
       const skyGrad = hcCtx.createLinearGradient(0, 0, 0, hcCanvas.height);
       skyGrad.addColorStop(0, '#38bdf8');
       skyGrad.addColorStop(0.65, '#bae6fd');
@@ -919,8 +896,8 @@
       hcCtx.lineTo(hcCanvas.width, hcCanvas.height);
       hcCtx.fill();
 
-      // Draw Terrain Surface
-      hcCtx.fillStyle = '#4ade80'; // Lush top grass
+      // Terrain Surface (Lush Grass)
+      hcCtx.fillStyle = '#4ade80';
       hcCtx.beginPath();
       hcCtx.moveTo(0, hcCanvas.height);
       for (let screenX = -20; screenX <= hcCanvas.width + 20; screenX += 8) {
@@ -932,8 +909,8 @@
       hcCtx.closePath();
       hcCtx.fill();
 
-      // Deep Dirt Layer
-      hcCtx.fillStyle = '#78350f'; // Dark earth dirt
+      // Dirt Layer
+      hcCtx.fillStyle = '#78350f';
       hcCtx.beginPath();
       hcCtx.moveTo(0, hcCanvas.height);
       for (let screenX = -20; screenX <= hcCanvas.width + 20; screenX += 8) {
@@ -945,7 +922,7 @@
       hcCtx.closePath();
       hcCtx.fill();
 
-      // Draw Pickups (Fuel & Coins)
+      // Collectibles
       hcPickups.forEach(p => {
         if (p.collected) return;
         const sx = p.x - viewOffsetX;
@@ -963,11 +940,10 @@
             hcCtx.font = 'bold 10px monospace';
             hcCtx.fillText('$', sx - 3, sy + 3);
           } else {
-            // Jerry Fuel Canister
             hcCtx.fillStyle = '#dc2626';
             hcCtx.fillRect(sx - 8, sy - 12, 16, 20);
             hcCtx.fillStyle = '#991b1b';
-            hcCtx.fillRect(sx - 4, sy - 16, 8, 4); // cap
+            hcCtx.fillRect(sx - 4, sy - 16, 8, 4);
             hcCtx.fillStyle = '#fff';
             hcCtx.font = 'bold 8px monospace';
             hcCtx.fillText('GAS', sx - 7, sy + 2);
@@ -975,19 +951,19 @@
         }
       });
 
-      // Draw Chosen Vehicle
+      // Render Selected Vehicle
       hcCtx.translate(vehicle.x - viewOffsetX, vehicle.y);
       hcCtx.rotate(vehicle.angle);
 
       if (currentVehicle === 'mojo') {
-        drawMahindraMojoXT300();
+        drawRealCartoonMojoXT300();
       } else {
-        drawMitsubishiPajero();
+        drawRealCartoonPajeroSFX();
       }
 
       hcCtx.restore();
 
-      // Overlay if crashed or out of fuel
+      // Game state overlays
       if (hcState === 'CRASHED') {
         hcCtx.fillStyle = 'rgba(0,0,0,0.75)';
         hcCtx.fillRect(0, 0, hcCanvas.width, hcCanvas.height);
@@ -1011,207 +987,358 @@
       }
     }
 
-    // --- Vector Drawing: Mahindra Mojo XT300 ---
-    function drawMahindraMojoXT300() {
-      // Rear & Front Wheels
-      drawMotorcycleWheel(-18, 10, vehicle.wheelRot);
-      drawMotorcycleWheel(18, 10, vehicle.wheelRot);
+    // =========================================================================
+    // ACCURATE CARTOON MAHINDRA MOJO XT300 (Modeled from the user image[cite: 1])
+    // =========================================================================
+    function drawRealCartoonMojoXT300() {
+      // 1. Wheels (Black Alloy Rims with Disc Brake)
+      drawMojoWheel(-22, 10, vehicle.wheelRot);
+      drawMojoWheel(22, 10, vehicle.wheelRot);
 
-      // Golden Upside-Down (USD) Front Forks
-      hcCtx.strokeStyle = '#eab308'; // Gold
-      hcCtx.lineWidth = 3.5;
+      // Front Mudguard / Fender (Glossy Black)[cite: 1]
+      hcCtx.fillStyle = '#0f172a';
       hcCtx.beginPath();
-      hcCtx.moveTo(4, -8);
-      hcCtx.lineTo(18, 10);
+      hcCtx.arc(22, 10, 17, -Math.PI * 0.9, -Math.PI * 0.2);
+      hcCtx.lineWidth = 4;
+      hcCtx.strokeStyle = '#0f172a';
       hcCtx.stroke();
 
-      // Rear Monoshock & Swingarm
-      hcCtx.strokeStyle = '#94a3b8';
+      // Rear Hugger Mudguard (Black)[cite: 1]
+      hcCtx.beginPath();
+      hcCtx.arc(-22, 10, 17, -Math.PI * 0.85, -Math.PI * 0.4);
+      hcCtx.strokeStyle = '#0f172a';
+      hcCtx.stroke();
+
+      // 2. Signature Upside Down (USD) Golden Front Forks[cite: 1]
+      hcCtx.strokeStyle = '#eab308'; // Gold
+      hcCtx.lineWidth = 4.5;
+      hcCtx.beginPath();
+      hcCtx.moveTo(11, -12);
+      hcCtx.lineTo(22, 10);
+      hcCtx.stroke();
+
+      // Lower Chrome Stanchions[cite: 1]
+      hcCtx.strokeStyle = '#cbd5e1';
       hcCtx.lineWidth = 3;
       hcCtx.beginPath();
-      hcCtx.moveTo(-3, 0);
-      hcCtx.lineTo(-18, 10);
+      hcCtx.moveTo(16, -1);
+      hcCtx.lineTo(22, 10);
       hcCtx.stroke();
 
-      // Dual Exhaust Canister (Mojo signature dual silencer)
-      hcCtx.fillStyle = '#475569';
-      hcCtx.fillRect(-15, 6, 16, 5);
-      hcCtx.fillStyle = '#cbd5e1';
-      hcCtx.fillRect(1, 7, 4, 3); // chrome tip
-
-      // Exposed Twin-Tube Frame (Gold Ribs)
-      hcCtx.strokeStyle = '#f59e0b';
-      hcCtx.lineWidth = 2.5;
-      hcCtx.beginPath();
-      hcCtx.moveTo(-10, -5);
-      hcCtx.lineTo(6, -8);
-      hcCtx.stroke();
-
-      // Engine Block 295cc EFI
-      hcCtx.fillStyle = '#1e293b';
-      hcCtx.fillRect(-7, 0, 14, 10);
-
-      // Muscular Sculpted Fuel Tank (Ocean Blue / Agate Red)
-      hcCtx.fillStyle = '#0284c7'; // Mojo Ocean Blue
-      hcCtx.beginPath();
-      hcCtx.moveTo(-12, -8);
-      hcCtx.lineTo(4, -13);
-      hcCtx.lineTo(8, -8);
-      hcCtx.lineTo(1, -2);
-      hcCtx.closePath();
-      hcCtx.fill();
-
-      // Twin Pod Headlamp Cowl (Twin-eye visor)
-      hcCtx.fillStyle = '#0f172a';
-      hcCtx.fillRect(7, -13, 8, 8);
-      hcCtx.fillStyle = '#fef08a'; // Headlamp glow
-      hcCtx.fillRect(14, -12, 3, 5);
-
-      // Single-piece touring seat
-      hcCtx.fillStyle = '#09090b';
-      hcCtx.beginPath();
-      hcCtx.moveTo(-18, -8);
-      hcCtx.lineTo(-7, -8);
-      hcCtx.lineTo(-2, -4);
-      hcCtx.lineTo(-18, -4);
-      hcCtx.closePath();
-      hcCtx.fill();
-
-      // Biker silhouette
-      hcCtx.fillStyle = '#1e293b';
-      hcCtx.beginPath();
-      hcCtx.arc(-4, -20, 6, 0, Math.PI * 2); // helmet
-      hcCtx.fill();
-      hcCtx.fillStyle = '#f59e0b'; // helmet visor
-      hcCtx.fillRect(-1, -21, 4, 3);
-      // Rider torso & arms to handlebars
-      hcCtx.strokeStyle = '#1e293b';
+      // 3. Golden Swingarm (Mojo Signature)[cite: 1]
+      hcCtx.strokeStyle = '#eab308';
       hcCtx.lineWidth = 4;
       hcCtx.beginPath();
-      hcCtx.moveTo(-6, -15);
-      hcCtx.lineTo(-2, -7);
-      hcCtx.lineTo(5, -10);
+      hcCtx.moveTo(-6, 4);
+      hcCtx.lineTo(-22, 10);
+      hcCtx.stroke();
+
+      // 4. Upswept Brushed Aluminum Exhaust Canister[cite: 1]
+      hcCtx.save();
+      hcCtx.translate(-14, 6);
+      hcCtx.rotate(-0.35); // Upswept angle
+      hcCtx.fillStyle = '#e2e8f0'; // Brushed aluminum
+      hcCtx.strokeStyle = '#64748b';
+      hcCtx.lineWidth = 1.5;
+      hcCtx.beginPath();
+      hcCtx.roundRect(0, 0, 24, 7, 3);
+      hcCtx.fill();
+      hcCtx.stroke();
+      // Heat shield line[cite: 1]
+      hcCtx.fillStyle = '#94a3b8';
+      hcCtx.fillRect(4, 2, 14, 3);
+      hcCtx.restore();
+
+      // 5. Black Engine Block (295cc EFI) with Belly Pan[cite: 1]
+      hcCtx.fillStyle = '#0f172a';
+      hcCtx.beginPath();
+      hcCtx.roundRect(-8, -2, 18, 14, 3);
+      hcCtx.fill();
+
+      // Black Engine Belly Cowl[cite: 1]
+      hcCtx.beginPath();
+      hcCtx.moveTo(-7, 12);
+      hcCtx.lineTo(8, 12);
+      hcCtx.lineTo(11, 8);
+      hcCtx.lineTo(-5, 8);
+      hcCtx.closePath();
+      hcCtx.fill();
+
+      // 6. Dual Golden Twin Ribs (Mojo Signature below the tank)[cite: 1]
+      hcCtx.strokeStyle = '#f59e0b';
+      hcCtx.lineWidth = 2.5;
+      // Top rib[cite: 1]
+      hcCtx.beginPath();
+      hcCtx.moveTo(-7, -4);
+      hcCtx.lineTo(9, -4);
+      hcCtx.stroke();
+      // Lower rib[cite: 1]
+      hcCtx.beginPath();
+      hcCtx.moveTo(-5, -1);
+      hcCtx.lineTo(7, -1);
+      hcCtx.stroke();
+
+      // 7. Radiator Shrouds with White Aerodynamic Fin Louvers[cite: 1]
+      hcCtx.fillStyle = '#0f172a';
+      hcCtx.fillRect(7, -6, 6, 8);
+      hcCtx.strokeStyle = '#ffffff';
+      hcCtx.lineWidth = 1.5;
+      hcCtx.beginPath();
+      hcCtx.moveTo(8, -4); hcCtx.lineTo(13, -4);
+      hcCtx.moveTo(8, -2); hcCtx.lineTo(13, -2);
+      hcCtx.moveTo(8, 0); hcCtx.lineTo(13, 0);
+      hcCtx.stroke();
+
+      // 8. Muscular High-Rise White Fuel Tank (Tear-Drop Pearl White)[cite: 1]
+      hcCtx.fillStyle = '#ffffff';
+      hcCtx.strokeStyle = '#cbd5e1';
+      hcCtx.lineWidth = 1.5;
+      hcCtx.beginPath();
+      hcCtx.moveTo(-8, -8);
+      hcCtx.bezierCurveTo(-4, -18, 6, -19, 10, -11);
+      hcCtx.lineTo(8, -5);
+      hcCtx.bezierCurveTo(2, -4, -4, -4, -8, -8);
+      hcCtx.closePath();
+      hcCtx.fill();
+      hcCtx.stroke();
+
+      // Black Center Tank Pad[cite: 1]
+      hcCtx.fillStyle = '#1e293b';
+      hcCtx.fillRect(-1, -16, 4, 3);
+
+      // 9. Black Stepped Touring Seat & Tail Cowl[cite: 1]
+      hcCtx.fillStyle = '#18181b';
+      hcCtx.beginPath();
+      hcCtx.moveTo(-8, -8);
+      hcCtx.quadraticCurveTo(-14, -8, -18, -13);
+      hcCtx.lineTo(-26, -11);
+      hcCtx.lineTo(-20, -5);
+      hcCtx.lineTo(-8, -5);
+      hcCtx.closePath();
+      hcCtx.fill();
+
+      // Rear Tail-Tidy / Number Plate Bracket[cite: 1]
+      hcCtx.fillStyle = '#0f172a';
+      hcCtx.fillRect(-28, -7, 6, 6);
+
+      // 10. Iconic Twin-Pod Bug-Eye Cowl & Dark Touring Visor[cite: 1]
+      // Twin Pod Headlight housing[cite: 1]
+      hcCtx.fillStyle = '#0f172a';
+      hcCtx.beginPath();
+      hcCtx.moveTo(10, -11);
+      hcCtx.lineTo(15, -17);
+      hcCtx.lineTo(18, -12);
+      hcCtx.lineTo(13, -6);
+      hcCtx.closePath();
+      hcCtx.fill();
+
+      // Twin Projector Headlamp Glow[cite: 1]
+      hcCtx.fillStyle = '#fef08a';
+      hcCtx.beginPath();
+      hcCtx.arc(15, -10, 2.5, 0, Math.PI * 2);
+      hcCtx.fill();
+
+      // Black Aerodynamic Tall Windscreen / Flyscreen[cite: 1]
+      hcCtx.fillStyle = '#020617';
+      hcCtx.beginPath();
+      hcCtx.moveTo(12, -16);
+      hcCtx.lineTo(17, -23);
+      hcCtx.lineTo(21, -15);
+      hcCtx.closePath();
+      hcCtx.fill();
+
+      // Handlebars & Rear-View Mirrors[cite: 1]
+      hcCtx.strokeStyle = '#475569';
+      hcCtx.lineWidth = 2;
+      hcCtx.beginPath();
+      hcCtx.moveTo(10, -14);
+      hcCtx.lineTo(7, -19); // mirror stalk[cite: 1]
+      hcCtx.stroke();
+      hcCtx.fillStyle = '#0f172a';
+      hcCtx.fillRect(5, -22, 4, 3); // mirror head[cite: 1]
+
+      // 11. Cartoon Biker
+      hcCtx.fillStyle = '#1e293b';
+      hcCtx.beginPath();
+      hcCtx.arc(-8, -25, 7, 0, Math.PI * 2); // helmet
+      hcCtx.fill();
+      hcCtx.fillStyle = '#eab308'; // visor
+      hcCtx.fillRect(-5, -26, 5, 4);
+
+      // Rider Jacket & Arms leaning forward
+      hcCtx.strokeStyle = '#0f172a';
+      hcCtx.lineWidth = 4.5;
+      hcCtx.beginPath();
+      hcCtx.moveTo(-11, -19);
+      hcCtx.lineTo(-6, -11);
+      hcCtx.lineTo(8, -15); // arm to clip-on handlebar
       hcCtx.stroke();
     }
 
-    function drawMotorcycleWheel(cx, cy, rot) {
+    function drawMojoWheel(cx, cy, rot) {
       hcCtx.save();
       hcCtx.translate(cx, cy);
       hcCtx.rotate(rot);
 
-      // Rubber Tire
-      hcCtx.fillStyle = '#18181b';
+      // Black Rubber Tire (Pirelli Diablo Rosso II profile)[cite: 1]
+      hcCtx.fillStyle = '#111827';
       hcCtx.beginPath();
-      hcCtx.arc(0, 0, 11, 0, Math.PI * 2);
+      hcCtx.arc(0, 0, 14, 0, Math.PI * 2);
       hcCtx.fill();
 
-      // Black Alloy Rim
-      hcCtx.fillStyle = '#3f3f46';
+      // Rim Wall
+      hcCtx.fillStyle = '#1f2937';
+      hcCtx.beginPath();
+      hcCtx.arc(0, 0, 10, 0, Math.PI * 2);
+      hcCtx.fill();
+
+      // Petal Disc Rotor (Silver)[cite: 1]
+      hcCtx.fillStyle = '#e2e8f0';
       hcCtx.beginPath();
       hcCtx.arc(0, 0, 7, 0, Math.PI * 2);
       hcCtx.fill();
 
-      // Spokes
-      hcCtx.strokeStyle = '#eab308'; // Golden wheel rim accent
-      hcCtx.lineWidth = 1.5;
-      for (let a = 0; a < Math.PI * 2; a += Math.PI / 3) {
+      // Black Alloy Y-Spokes[cite: 1]
+      hcCtx.strokeStyle = '#030712';
+      hcCtx.lineWidth = 2;
+      for (let a = 0; a < Math.PI * 2; a += Math.PI / 4) {
         hcCtx.beginPath();
         hcCtx.moveTo(0, 0);
-        hcCtx.lineTo(Math.cos(a) * 7, Math.sin(a) * 7);
+        hcCtx.lineTo(Math.cos(a) * 10, Math.sin(a) * 10);
         hcCtx.stroke();
       }
       hcCtx.restore();
     }
 
-    // --- Vector Drawing: Mitsubishi Pajero 4x4 ---
-    function drawMitsubishiPajero() {
-      // Rugged High-Travel Off-road Wheels
-      drawCarWheel(-23, 10, vehicle.wheelRot);
-      drawCarWheel(23, 10, vehicle.wheelRot);
+    // =========================================================================
+    // ACCURATE CARTOON MITSUBISHI PAJERO (2.8 SFX Dual-Tone)
+    // =========================================================================
+    function drawRealCartoonPajeroSFX() {
+      // Rugged High-Profile 4x4 Wheels
+      drawPajeroWheel(-26, 12, vehicle.wheelRot);
+      drawPajeroWheel(26, 12, vehicle.wheelRot);
 
-      // Tailgate Mounted Spare Wheel (Pajero signature rear)
-      hcCtx.fillStyle = '#18181b';
-      hcCtx.fillRect(-35, -12, 7, 18);
-      hcCtx.fillStyle = '#e2e8f0';
-      hcCtx.fillRect(-33, -9, 3, 12);
+      // 1. Tailgate-Mounted Full-Size Spare Wheel (Pajero SFX Signature)
+      hcCtx.fillStyle = '#111827';
+      hcCtx.fillRect(-42, -14, 8, 22);
+      // Hard cover matching body two-tone
+      hcCtx.fillStyle = '#b91c1c'; // Red
+      hcCtx.fillRect(-41, -11, 6, 8);
+      hcCtx.fillStyle = '#e2e8f0'; // Silver
+      hcCtx.fillRect(-41, -3, 6, 8);
 
-      // Main Boxy Body Shell (Two-Tone Heritage: White/Silver over Grey cladding)
-      hcCtx.fillStyle = '#f8fafc'; // Alpine White top body
+      // 2. Upper Body Shell (Pajero Flame Red / Alpine White)
+      hcCtx.fillStyle = '#b91c1c'; // Deep Rally Red
       hcCtx.beginPath();
-      hcCtx.moveTo(-30, -5);
-      hcCtx.lineTo(-30, -22);
-      hcCtx.lineTo(-8, -23); // roofline
-      hcCtx.lineTo(12, -23);
-      hcCtx.lineTo(22, -10); // rake windscreen
-      hcCtx.lineTo(34, -8);  // bonnet nose
-      hcCtx.lineTo(34, 0);
-      hcCtx.lineTo(-30, 0);
+      hcCtx.moveTo(-34, -4);
+      hcCtx.lineTo(-34, -25);
+      hcCtx.lineTo(-6, -26); // Flat roof
+      hcCtx.lineTo(16, -26);
+      hcCtx.lineTo(25, -12); // Steep upright windscreen
+      hcCtx.lineTo(38, -10); // High flat bonnet
+      hcCtx.lineTo(38, -1);
+      hcCtx.lineTo(-34, -1);
       hcCtx.closePath();
       hcCtx.fill();
 
-      // Lower Rugged Fender Cladding (Grey 2-tone)
-      hcCtx.fillStyle = '#64748b';
-      hcCtx.fillRect(-30, -2, 64, 8);
+      // Intercooler Hood Scoop on Bonnet
+      hcCtx.fillStyle = '#7f1d1d';
+      hcCtx.fillRect(26, -13, 8, 3);
 
-      // Flared Wheel Arches
-      hcCtx.fillStyle = '#475569';
+      // 3. Lower Silver Cladding & Flared Wheel Arches (Two-Tone SFX Heritage)
+      hcCtx.fillStyle = '#cbd5e1'; // Metallic Silver Lower
+      hcCtx.fillRect(-34, -1, 72, 9);
+
+      // Chunky Flared Wheel Arches
+      hcCtx.fillStyle = '#94a3b8';
       hcCtx.beginPath();
-      hcCtx.arc(-23, 6, 13, Math.PI, 0);
+      hcCtx.arc(-26, 7, 16, Math.PI, 0);
       hcCtx.fill();
       hcCtx.beginPath();
-      hcCtx.arc(23, 6, 13, Math.PI, 0);
+      hcCtx.arc(26, 7, 16, Math.PI, 0);
       hcCtx.fill();
 
-      // Tinted Windows & Pillars
-      hcCtx.fillStyle = '#0284c7';
-      // Side windows
-      hcCtx.fillRect(-26, -20, 14, 10);
-      hcCtx.fillRect(-9, -20, 16, 10);
+      // 4. Tinted Windows & Pillars
+      hcCtx.fillStyle = '#38bdf8'; // Tinted Glass
+      // Rear sliding quarter window
+      hcCtx.fillRect(-30, -22, 14, 11);
+      // Center passenger door window
+      hcCtx.fillRect(-13, -22, 18, 11);
+      // Front driver window
       hcCtx.beginPath();
-      hcCtx.moveTo(10, -20);
-      hcCtx.lineTo(19, -10);
-      hcCtx.lineTo(10, -10);
+      hcCtx.moveTo(8, -22);
+      hcCtx.lineTo(21, -13);
+      hcCtx.lineTo(8, -13);
       hcCtx.closePath();
       hcCtx.fill();
 
-      // Headlamps & Grille (Classic 3-Diamond Pajero face)
-      hcCtx.fillStyle = '#fef08a';
-      hcCtx.fillRect(32, -6, 3, 6);
+      // Black Body Pillar Dividers (B & C Pillars)
       hcCtx.fillStyle = '#0f172a';
-      hcCtx.fillRect(32, 0, 3, 4); // front bull bumper
+      hcCtx.fillRect(-15, -23, 3, 13);
+      hcCtx.fillRect(6, -23, 3, 13);
 
-      // Roof Rails
-      hcCtx.strokeStyle = '#334155';
-      hcCtx.lineWidth = 2;
+      // 5. Front Bull Bar Guard & Headlamp Cluster
+      // Clear lens rectangular headlamp with amber corner indicator
+      hcCtx.fillStyle = '#fef08a';
+      hcCtx.fillRect(36, -8, 3, 6);
+      hcCtx.fillStyle = '#f97316'; // Amber indicator
+      hcCtx.fillRect(34, -8, 2, 6);
+
+      // Chrome 3-Diamond Grille
+      hcCtx.fillStyle = '#f8fafc';
+      hcCtx.fillRect(37, -6, 2, 4);
+
+      // Rugged Front Off-Road Bull Bumper
+      hcCtx.fillStyle = '#1e293b';
+      hcCtx.fillRect(37, -2, 5, 8);
+      hcCtx.fillRect(35, 3, 7, 4);
+
+      // 6. Black Heavy-Duty Roof Rails
+      hcCtx.strokeStyle = '#0f172a';
+      hcCtx.lineWidth = 2.5;
       hcCtx.beginPath();
-      hcCtx.moveTo(-24, -25);
-      hcCtx.lineTo(10, -25);
+      hcCtx.moveTo(-28, -28);
+      hcCtx.lineTo(16, -28);
       hcCtx.stroke();
+      // Roof rack mounts
+      hcCtx.fillRect(-24, -28, 3, 3);
+      hcCtx.fillRect(10, -28, 3, 3);
+
+      // 7. Side Foot Step (Running Board)
+      hcCtx.fillStyle = '#0f172a';
+      hcCtx.fillRect(-10, 8, 20, 2.5);
     }
 
-    function drawCarWheel(cx, cy, rot) {
+    function drawPajeroWheel(cx, cy, rot) {
       hcCtx.save();
       hcCtx.translate(cx, cy);
       hcCtx.rotate(rot);
 
-      // Deep Tread SUV Tire
+      // Heavy Off-Road Radial Tire
       hcCtx.fillStyle = '#0f172a';
       hcCtx.beginPath();
-      hcCtx.arc(0, 0, 13, 0, Math.PI * 2);
+      hcCtx.arc(0, 0, 15, 0, Math.PI * 2);
       hcCtx.fill();
 
-      // 6-Spoke Off-Road Rim
+      // Pajero 6-Spoke Deep Dish Alloy Rim
       hcCtx.fillStyle = '#cbd5e1';
       hcCtx.beginPath();
-      hcCtx.arc(0, 0, 8, 0, Math.PI * 2);
+      hcCtx.arc(0, 0, 9, 0, Math.PI * 2);
       hcCtx.fill();
 
-      hcCtx.strokeStyle = '#334155';
-      hcCtx.lineWidth = 2;
+      // Red Center Hub (AWD hub lock)
+      hcCtx.fillStyle = '#b91c1c';
+      hcCtx.beginPath();
+      hcCtx.arc(0, 0, 3.5, 0, Math.PI * 2);
+      hcCtx.fill();
+
+      // Spokes
+      hcCtx.strokeStyle = '#64748b';
+      hcCtx.lineWidth = 2.5;
       for (let a = 0; a < Math.PI * 2; a += Math.PI / 3) {
         hcCtx.beginPath();
         hcCtx.moveTo(0, 0);
-        hcCtx.lineTo(Math.cos(a) * 8, Math.sin(a) * 8);
+        hcCtx.lineTo(Math.cos(a) * 9, Math.sin(a) * 9);
         hcCtx.stroke();
       }
       hcCtx.restore();
@@ -1222,7 +1349,6 @@
     // ==========================================
     window.addEventListener('keydown', e => {
       initAudio();
-      // Mario Controls
       if (e.code === 'ArrowRight' || e.code === 'KeyD') { marioKeys.right = true; hcKeys.gas = true; }
       if (e.code === 'ArrowLeft' || e.code === 'KeyA') { marioKeys.left = true; hcKeys.brake = true; }
       if (e.code === 'ArrowUp' || e.code === 'KeyW' || e.code === 'Space') { marioKeys.jump = true; e.preventDefault(); }
@@ -1237,7 +1363,6 @@
       if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') marioKeys.run = false;
     });
 
-    // Mobile Virtual Touch Buttons
     const bindBtn = (id, onStart, onEnd) => {
       const el = document.getElementById(id);
       if (!el) return;
@@ -1259,7 +1384,6 @@
     // 5. MASTER ANIMATION LOOP
     // ==========================================
     function mainLoop() {
-      // Run updates according to active view to save performance
       if (!document.getElementById('mario-view').classList.contains('hidden')) {
         updateMario();
         renderMario();
@@ -1270,7 +1394,6 @@
       requestAnimationFrame(mainLoop);
     }
 
-    // Initialize both games and start the loop
     resetMarioGame(true);
     resetHillClimb();
     mainLoop();
